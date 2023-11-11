@@ -75,9 +75,11 @@ create.addEventListener('submit', async e =>{
 
         const response = await axios.post('/api/users', newUser);
         console.log(response);
-
+    
         console.log(newUser);
+        createNotification(false,response.data.message)
     } catch (error) {
         console.log(error);
+        createNotification(true,error.response.data.error)
     }
 })
