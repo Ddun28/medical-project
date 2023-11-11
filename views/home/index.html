@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/icon-x"  href="img/Blue Minimalist Medical Logo.png">
+
+    
+</head>
+<body class="font-principal">
+
+    <header>
+
+        <nav class="wrapper h-20 flex items-center justify-between">
+
+            <a href="./" class="w-1/3 max-w-[140px]">
+                <img src="/img/Blue Minimalist Medical Logo.png" class="w-full">
+            </a>
+
+            <input type="checkbox" id="menu" class="peer hidden">
+
+            <label for="menu" class="bg-open-menu w-6 h-5 bg-cover bg-center cursor-pointer peer-checked:bg-close-menu transition-all z-50 md:hidden"></label>
+
+            <div class="fixed inset-0 bg-gradient-to-b from-white/70 to-black/70 translate-x-full peer-checked:translate-x-0 transition-transform z-40 md:static md:bg-none md:translate-x-0">
+
+                <ul class="absolute inset-x-0 top-24 p-12 bg-white w-[90%] mx-auto rounded-md h-max text-center grid gap-6 font-bold text-dark-blue shadow-2xl md:w-max md:bg-transparent md:p-0 md:grid-flow-col md:static">
+
+                    <li>
+                        <a href="/login">Ingresar</a>
+                    </li>
+        
+                    <li>
+                        <a href="/registrarse">Registrarse</a>
+                    </li>
+        
+                    <li>
+                        <a href="#">Sobre Nosotros</a>
+                    </li>
+        
+                    <li>
+                        <a href="#">Agenda ahora</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <a href="/login" class="bg-blue-800 text-white font-bold hover:bg-blue-300 px-4 ease-out duration-300 w-max rounded-full shadow-sm  hidden py-3 lg:block">Iniciar Sesion</a>
+        </nav>
+
+        <section class="wrapper grid gap-8 justify-items-center items-center pb-8 md:grid-cols-2 md:py-24">
+
+            <img src="/img/undraw_medicine_b1ol.png" class="w-full max-w-lg md:order-1">
+
+            <article class="text-center space-y-6 md:text-left md:space-y-8">
+
+                <h1 class="text-4xl font-bold text-very-dark-blue md:text-5xl">Consulte la disponibilidad de nuestras consultas.
+                </h1>
+
+                <p class="text-dark-grayish-blue">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur perspiciatis dolor deserunt quod nulla, sequi debitis similique ad. Rem doloremque omnis et illum!.
+                </p>
+
+                <a href="/registrarse" class="bg-blue-400 text-white font-bold hover:bg-blue-900 mx-auto shadow-xl py-4 px-4 
+                block w-max rounded-full transition ease-in-out duration-300 md:mx-0 py'4">Registrese Ahora</a>
+
+            </article>
+
+        </section>
+
+    </header>
+
+    <main>
+
+        <section class="wrapper text-center py-24 grid gap-12 md:grid-cols-2 md:text-left">
+
+            <article>
+
+                <h2 class="text-3xl font-bold text-very-dark-blue mb-6 md:text-4xl">Porque deberian de agendar con nosotros?
+                </h2>
+
+                <p class="text-dark-grayish-blue">Manage provides all the functionality your team needs, without the complexity. Our software is tailor-made for modern digital product teams.</p>
+            
+                <img class="w-60 ml-16" src="/img/undraw_Love_it_xkc2.png" alt="">
+
+            </article>
+
+            <div class="grid gap-12">
+
+                <article class="space-y-4 md:space-y-6">
+
+                    <p class="bg-very-pale-red rounded-l-full font-bold flex items-center md:bg-transparent">
+                        <span class="bg-emerald-400 text-white px-6 rounded-full py-2">
+                            01
+                        </span>
+                        <span class="flex-1 p-2">
+                            Contamos con los mejores en el area
+                        </span>
+                    </p>
+
+                    <p class="text-dark-grayish-blue text-left">See how your day-to-day tasks fit into the wider vision. Go from tracking progress at the milestone level all the way done to the smallest of details. Never lose sight of the bigger picture again.</p>
+
+                </article>
+
+                <article class="space-y-4 md:space-y-6">
+
+                    <p class="bg-very-pale-red rounded-l-full font-bold flex items-center md:bg-transparent">
+                        <span class="bg-emerald-400 text-white px-6 rounded-full py-2">
+                            02
+                        </span>
+                        <span class="flex-1 p-2">
+                            Manejamos un sistema Automatizado
+                        </span>
+                    </p>
+
+                    <p class="text-dark-grayish-blue text-left">Set internal delivery estimates and track progress toward company goals. Our customisable dashboard helps you build out the reports you need to keep key stakeholders informed.
+
+                    </p>
+
+                </article>
+
+                <article class="space-y-4 md:space-y-6">
+
+                    <p class="bg-very-pale-red rounded-l-full font-bold flex items-center md:bg-transparent">
+                        <span class="bg-emerald-400 text-white px-6 rounded-full py-2">
+                            03
+                        </span>
+                        <span class="flex-1 p-2">
+                            Nunca habia sido tan rapido
+                        </span>
+                    </p>
+
+                    <p class="text-dark-grayish-blue text-left">Stop jumping from one service to another to communicate, store files, track tasks and share documents. Manage offers an all-in-one team productivity solution.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <section class="wrapper text-center py-24 max-w-lg mx-auto md:max-w-xl">
+
+            <h2 class="text-3xl font-bold text-very-dark-blue md:text-4xl">Algunos de nuestros Pacientes
+            </h2>
+
+            <div class="mt-24 mb-14">
+
+                <article class="bg-vary-light-gray pt-16 pb-12 px-4 relative">
+
+                    <img src="/img/avatar-ali.png" class="absolute w-24 aspect-square -top-12 inset-x-0 mx-auto">
+
+                    <h3 class="text-xl mb-4 pt-2 font-bold text-very-dark-blue">Ali Bravo
+                    </h3>
+
+                    <p class="text-dark-grayish-blue">“We have been able to cancel so many other subscriptions since using Manage. There is no more cross-channel confusion and everyone is much more focused.”</p>
+
+                </article>
+
+            </div>
+
+            <a href="/login" class="bg-blue-400 text-white font-bold hover:bg-blue-900 mx-auto shadow-xl py-4 px-12
+            block w-max rounded-full transition ease-in-out duration-300">Inicie ahora</a>
+        </section>
+
+        <section class="bg-slate-400 font-bold">
+
+            <div class="wrapper py-24 text-center grid gap-6 md:grid-cols-[40%_40%] md:justify-between md:items-center md:text-left">
+
+                <h2 class="text-4xl text-white">Trabajamos de 8am a 5pm llame ahora.
+                </h2>
+
+                <a href="/login" class="text-black bg-vary-light-gray w-max block rounded-full hover:bg-slate-200 transition ease-in-out duration-200 mx-auto shadow-xl py-3 px-8
+                 md:mx-0 md:justify-self-end">Iniciar</a>
+
+            </div>
+
+        </section>
+    </main>
+    
+    <footer class="bg-very-dark-blue py-24">
+        <section class="wrapper grid gap-12 justify-items-center footer-area md:footer-area-md md:grid-cols-3 md:justify-items-stretch">
+
+            <form class="flex gap-4 w-full min-w-[100px] [grid-area:form]">
+                <input type="email" placeholder="Agregar Comentarios…" class="min-w-[50px] flex-1 rounded-full px-4">
+
+                <input type="submit" value="GO" class="py-3 px-8  rounded-full text-white">
+            </form>
+
+            <nav class="grid 
+            grid-cols-[max-content_max-content] gap-y-4 justify-between text-white w-4/5 [grid-area:navigation] md:w-full">
+                <a href="#">Inicio</a>
+                <a href="#">Precios</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Ubicacion</a>
+                <a href="#">Comunidad</a>
+                <a href="#">Politicas de Privacidad</a>
+            </nav>
+
+            <div class="flex flex-wrap gap-4 justify-between w-full [grid-area:social-media]">
+
+                <a href="#">
+                    <img src="/img/icon-facebook.svg" class="w-8">
+                </a>
+                <a href="#">
+                    <img src="/img/icon-youtube.svg" class="w-8">
+                </a>
+                <a href="#">
+                    <img src="/img/icon-twitter.svg" class="w-8">
+                </a>
+                <a href="#">
+                    <img src="/img/icon-pinterest.svg" class="w-8">
+                </a>
+                <a href="#">
+                    <img src="/img/icon-instagram.svg"  class="w-8">
+                </a>
+
+            </div>
+
+            <p class="text-dark-grayish-blue text-center [grid-area:copy] md:text-right">Copyright 2023</p>
+        </section>
+    </footer>
+
+
+</body>
+</html>
