@@ -12,13 +12,19 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.0",
+<<<<<<< HEAD
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+=======
+>>>>>>> 51343543d614137ce8546b553479c0d1f654f90c
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "json-server": "^0.17.4",
     "mongoose": "^7.6.3",
+<<<<<<< HEAD
     "morgan": "^1.10.0",
+=======
+>>>>>>> 51343543d614137ce8546b553479c0d1f654f90c
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
