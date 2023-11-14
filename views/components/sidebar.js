@@ -2,23 +2,24 @@ const sidebar = document.querySelector('#sidebar');
 
 const crearSidebar = () =>{
     sidebar.innerHTML = `
-    <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+    <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
         <button id="menuBtn">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
-        </button>
+        </button> 
 
         <!-- Logo -->
-        <div class="ml-1 items-center">
-            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28">
+        <div id="modo-oscuro" class="ml-1 items-center">
+            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+            <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
 
     </div>
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-800">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
     <!-- Items -->
     <div class="p-4 space-y-4">
         <!-- Inicio -->
