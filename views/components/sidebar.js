@@ -8,9 +8,9 @@ const crearSidebar = () =>{
         <button id="menuBtn">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button> 
-
+       
         <!-- Logo -->
-        <div id="modo-oscuro" class="ml-1 items-center">
+        <div class="md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -30,11 +30,11 @@ const crearSidebar = () =>{
         </a>
 
         <a href="/principal/historial/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
-            <i class="fas fa-wallet"></i>
-            <span>Historial</span>
+            <i class="fas fa-user"></i>
+            <span>Recipe e Indicaciones</span>
         </a>
         <a href="/principal/pagos" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-wallet"></i>      
             <span>Metodos de Pagos</span>
         </a>
         <a href="#" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
@@ -63,7 +63,7 @@ const sidebarHistorial = () =>{
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-800 dark:text-white">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-800 dark:text-white">
     <!-- Items -->
     <div class="p-4 space-y-4">
         <!-- Inicio -->
@@ -74,11 +74,11 @@ const sidebarHistorial = () =>{
         </a>
 
         <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-lg  text-white bg-gradient-to-r from-sky-600 to-cyan-400">
-            <i class="fas fa-wallet text-white"></i>
-            <span class="-mr-1 font-medium">Historial</span>
+            <i class="fas fa-user"  text-white"></i>
+            <span class="-mr-1 font-medium">Recipe e Indicaciones</span>
         </a>
         <a href="/principal/pagos" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-wallet"></i>
             <span>Metodos de Pagos</span>
         </a>
         <a href="/" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
@@ -107,7 +107,7 @@ const sidebarPagos = () =>{
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-800 dark:text-white">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-800 dark:text-white">
     <!-- Items -->
     <div class="p-4 space-y-4">
         <!-- Inicio -->
@@ -118,11 +118,11 @@ const sidebarPagos = () =>{
         </a>
 
         <a href="/principal/historial/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
-            <i class="fas fa-wallet"></i>
-            <span>Historial</span>
+            <i class="fas fa-user" ></i>
+            <span>Recipe e Indicaciones</span>
         </a>
         <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
-            <i class="fas fa-user text-white"></i>
+            <i class="fas fa-wallet"  text-white"></i>
             <span class="-mr-1 font-medium">Metodos de Pagos</span>
         </a>
         <a href="/" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
@@ -151,7 +151,7 @@ const sidebarAdmin = () => {
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-800">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-800">
     <!-- Items -->
     <div class="p-4 space-y-4">
         <!-- Inicio -->
@@ -167,7 +167,7 @@ const sidebarAdmin = () => {
         </a>
         <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>
-            <span>Metodos de Pagos</span>
+            <span>Verificar de Pagos</span>
         </a>
         <a href="/" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-sign-out-alt"></i>
@@ -195,3 +195,43 @@ const menuBtn = document.getElementById('menuBtn');
         menuBtn.addEventListener('click', () => {
             sideNav.classList.toggle('hidden');
         });
+
+const sunIcon = document.querySelector('.sun');
+const moonIcon = document.querySelector('.moon');
+const userTheme = localStorage.getItem('theme');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const iconToggle = () =>{
+    moonIcon.classList.toggle('hidden');
+    sunIcon.classList.toggle('hidden');
+};
+
+const themeCheck = () => {
+    if(userTheme === 'dark' || (!userTheme && systemTheme)){
+        document.documentElement.classList.add('dark');
+        moonIcon.classList.add('hidden');
+        return;
+    }
+    sunIcon.classList.add('hidden');
+};
+
+const themeSwitch = () => {
+    if(document.documentElement.classList.contains('dark')){
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'ligth');
+        iconToggle();
+        return;
+    }
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+    iconToggle();
+}
+
+sunIcon.addEventListener('click', () => {
+    themeSwitch();
+});
+
+moonIcon.addEventListener('click', () => {
+    themeSwitch();
+});
+
+themeCheck();
