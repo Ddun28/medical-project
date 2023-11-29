@@ -1,4 +1,3 @@
-const buttonPaypal = document.querySelector('#paypal');
 const closeButton = document.querySelector('#close-modal');
 const closeButton2 = document.querySelector('#close-modal2');
 const modalPago = document.querySelector('#modal-componet-container');
@@ -9,8 +8,6 @@ const buttonCash = document.querySelector('#cash');
 const priceDolar = document.querySelector('#tasa');
 
 const text = document.createElement('p')
-
-buttonPaypal.addEventListener('click', () => {})
 
 buttonPago.addEventListener('click', () => {
     //openModal();
@@ -30,6 +27,7 @@ closeButton2.addEventListener('click', () =>{
 buttonCash.addEventListener('click', () => {
     modalCash.classList.remove('hidden');
 })
+
 
 /*
 function openModal(){
