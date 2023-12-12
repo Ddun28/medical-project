@@ -74,7 +74,7 @@ window.paypal
             orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
             orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
           resultMessage(
-            `Transaction ${transaction.status}: ${transaction.id}<br><br>See console for all available details`,
+            `Transaction ${transaction.status}: ${transaction.id}<br><br>Pago realizado con exito`,
           );
           console.log(
             "Capture result",

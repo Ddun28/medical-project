@@ -3,14 +3,18 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     name:String,
     email:String,
-    password:String,
+    passwordHash:String,
     verified:{
         type:Boolean,
         default:false
-    }
-})
+    },
+    citas: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cita'
+    }]
+});
 
-userSchema.set('tpJSON', {
+userSchema.set('toJSON', {
 
     transform:(document,retunrObject) =>{
 

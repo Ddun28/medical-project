@@ -1,0 +1,23 @@
+const jwt = require('jsonwebtoken');
+const User = require('../model/user');
+
+const userExtractor = async (request, response, next) => {
+  try {
+    const token = request.cookies?.accessToken;
+    if (!token) {
+      return response.sendStatus(401);
+    }
+
+    const decoded = jwt.verify(token, process.env.ACCES_TOKEN_SECRET);
+    const user = await User.findById(decoded.id);
+    request.user = user;
+  } catch (error) {
+    console.log(error);
+    return response.sendStatus(403);
+  }
+
+
+  next();
+};
+
+module.exports = { userExtractor };

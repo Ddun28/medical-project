@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/icon-x"  href="/img/favicon-32x32.png">
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
 
 </head>
 <body>
@@ -17,10 +17,10 @@
         <div class="md:w-1/2 px-16">
             <h2 class="font-bold text-2xl text-indigo-950">Inicia Sesion</h2>
             <p class="text-sm mt-3 text-indigo-950">Inicia Sesion y disfruta de nuestros servicios</p>
-            <form id="login" class="flex flex-col gap-4">
-                <input id="input-login" class="p-2 mt-5 rounded-xl border" type="text" name="email" placeholder="Email">
+            <form id="formulario" class="flex flex-col gap-4">
+                <input id="email-input" class="p-2 mt-5 rounded-xl border" type="text" name="email" placeholder="Email">
                 <div class="relative">
-                    <input id="pass" class="p-2 rounded-xl border w-full" type="password" 
+                    <input id="password-input" class="p-2 rounded-xl border w-full" type="password" 
                     name="contrasena" placeholder="contrasena">
                     
                 </div>
@@ -53,5 +53,6 @@
     </div>
     </section>
     <script src="index.js"></script>
+    <script src="../components/notificaciones.js" ></script>
 </body>
 </html>

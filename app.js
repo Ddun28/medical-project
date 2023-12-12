@@ -6,8 +6,12 @@ const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-
+const { userExtractor } = require('./middleware/auth');
+const citasRouter = require('./controller/citas');
 const usersRouter = require('./controller/users');
+const loginRouter = require('./controller/login');
+const pagoRouter = require('./controller/pagos');
+
 
 
 (async()=>{
@@ -30,6 +34,7 @@ app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/admin', express.static(path.resolve('views', 'admin')));
 app.use('/historial', express.static(path.resolve('views', 'Principal', 'Historial')));
 app.use('/pagos', express.static(path.resolve('views', 'Principal', 'Pagos')));
+app.use('/verify/:id/:token', express.static(path.resolve('views', 'verify')));
 app.use('/img', express.static(path.resolve('img')));
 app.use(morgan('tiny'));
 
@@ -37,15 +42,15 @@ app.use(express.json())
 
 //ruta backend
 app.use('/api/users', usersRouter)
+app.use(express.static("client"));
+app.use('/api/citas', userExtractor, citasRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/pagos', pagoRouter);
+
+
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
-
-// host static files
-app.use(express.static("client"));
-
-// parse post params sent in body in json format
-app.use(express.json());
 
 /**
  * Generate an OAuth 2.0 access token for authenticating with PayPal REST APIs.

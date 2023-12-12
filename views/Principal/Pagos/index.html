@@ -15,9 +15,21 @@
     <!-- ExchangeMonitor.net Widgets -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://exchangemonitor.net/js/script.widgets-0.5.js"></script>
-    <script type="text/javascript">ExchangeMonitorWidgetUnique("ve","bcv","300px","light",false);</script>
+    <script type="text/javascript">ExchangeMonitorWidgetUnique("ve","bcv","100px","light",false);</script>
 </head>
-<body class="font-principal bg-gray-200 dark:bg-slate-800">
+<body class="font-principal bg-gray-200 dark:bg-slate-800 overflow-hidden">
+    <div class="h-screen bg-slate-300 flex justify-center items-center"id="contenedor">
+        <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    </div>
     <div id="sidebar"></div>
 
     <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
@@ -25,22 +37,26 @@
             <h1 class="text-3xl font-bold text-gray-700">Metodos de pagos</h1>
         </div>
    <!--Botones opciones de pago-->
-        <div class="my-4">
+        <div class="my-4 flex justify-between">
             <h1 class="text-xl font-medium text-gray-800">Elija el metodo de pago</h1>
 
-            <div id="tasa">
+            
                 <!-- ExchangeMonitor.net Widget START -->
-            <div class="exchangemonitor-widget-unique ve bcv ml-5 mt-5">
+            <div class="exchangemonitor-widget-unique ve bcv">
                 <a class="exchangemonitor-widget-container" href="https://exchangemonitor.net/estadisticas/ve/bcv" target="_blank">
                     <div class="exchangemonitor-widget-box"></div>
                 </a>
             </div>
                 <!-- ExchangeMonitor.net Widget END -->
-            </div>
+        </div>
 
         <div class="flex lg:justify-around justify-evenly mt-5 ">
-                 <div id="paypal-button-container"></div>
-                 <p id="result-message"></p>
+            <button id="Paypal" class="bg-gradient-to-r from-sky-600 to-cyan-400 rounded text-white text-center font-medium w-40 h-14 flex justify-center items-center shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-paypal  mr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
+                fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13l2.5 0c2.5 0 5 -2.5 5 -5c0 -3 -1.9 -5 -5 
+                -5h-5.5c-.5 0 -1 .5 -1 1l-2 14c0 .5 .5 1 1 1h2.8l1.2 -5c.1 -.6 .4 -1 1 -1zm7.5 -5.8c1.7 1 2.5 2.8 2.5 4.8c0 2.5 -2.5 4.5 -5 4.5h-2.6l-.6 3.6a1 1 0 0 1 -1 .8l-2.7 0a.5 .5 0 0 1 -.5 -.6l.2 -1.4" /></svg>
+                <h2>Paypal</h2>
+            </button>
             <button id="pago" class="bg-gradient-to-r from-sky-600 to-cyan-400 rounded text-white text-center font-medium w-40 h-14 flex justify-center items-center shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer mr-1" width="24" height="24" 
                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -98,16 +114,16 @@
                                         <p>30260351</p>
                                     </div>
                                     <p class="text-base">Monto de la transaccion</p>
-                                    <input type="text" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
+                                    <input type="text" id="cantidad" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
                                     <p class="text-base mt-2">Agrege los 6 ultimos numeros de la referencia</p>
-                                    <input type="text" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
+                                    <input type="text" id="referencia" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
                                 </div>
                             </div>      
                     </div>
                 </div>
 
                 <div class="modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button class="w-full inline-flex justify-center rounded-md 
+                    <button id="agg-pMovil" class="w-full inline-flex justify-center rounded-md 
                     border border-transparent
                     font-medium px-4 py-2 text-white bg-green-700 
                     hover:bg-green-400 focus:outline-none
@@ -159,7 +175,7 @@
                                   <h3 class="text-lg font-medium text-gray-900">Agregar datos del pago</h3>
                                   <div class="modal-text mt-2">
                                       <p class="text-base">Monto del Pago en efectivo</p>
-                                      <input type="text" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
+                                      <input type="text" id="cantidad" class="w-60 mt-2 border-solid border-2 border-zinc-700 rounded-md">
                                   </div>
                               </div>      
                       </div>
@@ -175,6 +191,65 @@
                       focus:ring-stone-300 sm:mt-0 sm:ml-3
                       sm:w-auto sm:text-sm">Agregar Pago</button>
                       <button id="close-modal2" class="w-full inline-flex justify-center rounded-md 
+                      border border-transparent
+                      font-medium px-4 py-2 text-white bg-red-700 
+                      hover:bg-red-400 focus:outline-none mt-3
+                      focus:ring-2
+                      shadow-md focus:ring-offset-2
+                      focus:ring-red-200 sm:mt-0 sm:ml-3
+                      sm:w-auto sm:text-sm">Cancelar</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+           <!--Modal pago Paypal-->
+           <div id="modal-componet-paypal" class="hidden fixed inset-0">
+            <div class="modal-flex-container flex 
+            items-end justify-center
+            min-h-screen pt-4
+            px-4
+            pb-20
+            text-center
+            sm:block sm:p-0">
+              <div class="fixed inset-0 
+              bg-gray-700 bg-opacity-75"></div>
+  
+              <div class="modal-space-container hidden sm:inline-block sm:align-middle sm:h-screen"></div>
+  
+              <div id="modal-container" class="modal-container inline-block align-bottom bg-white
+              rounded-lg text-left overflow-hidden shadow-xl transform 
+              transition-all
+              sm:my-8 sm:align-middle sm:max-w-lg">
+  
+                  <div class="modal-wrapper bg-white px-4 pt-5 pb-4 
+                  sm:p-6 sm:pb-4">
+                      <div class="modal-wrapper-flex sm:flex sm:items-start">
+                          <div class="modal-icon mx-auto 
+                          flex-shrink-0 flex items-center justify-center
+                          h-12 w-12 rounded-full bg-green-200 sm:mx-0 sm:h-10 sm:w-10"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-money" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M12 17v1m0 -8v1" /></svg></div>
+                              <div class="modal-content text-center mt-3
+                               sm:mt-0 sm:ml-4
+                              sm:text-left">
+                                  <h3 class="text-lg font-medium text-gray-900">Pagar con Paypal</h3>
+                                  <div class="modal-text mt-2">
+                                    <div id="paypal-button-container"></div>
+                                    <p id="result-message"></p>
+                                  </div>
+                              </div>      
+                      </div>
+                  </div>
+  
+                  <div class="modal-actions bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                      <button class="w-full inline-flex justify-center rounded-md 
+                      border border-transparent
+                      font-medium px-4 py-2 text-white bg-green-700 
+                      hover:bg-green-400 focus:outline-none
+                      focus:ring-2
+                      shadow-md focus:ring-offset-2
+                      focus:ring-stone-300 sm:mt-0 sm:ml-3
+                      sm:w-auto sm:text-sm">Agregar Pago</button>
+                      <button id="close-modal3" class="w-full inline-flex justify-center rounded-md 
                       border border-transparent
                       font-medium px-4 py-2 text-white bg-red-700 
                       hover:bg-red-400 focus:outline-none mt-3
