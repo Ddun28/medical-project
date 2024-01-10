@@ -13,8 +13,8 @@ const { userExtractor } = require('../middleware/auth');
 //registrar lo que el usuario me envia 
 userRouter.post('/', async (request, response) => {
     //console.log(request.body);
-    const {name, email, password} = request.body;
-    console.log(name,email,password);
+    const {name, email, password, rol} = request.body;
+    console.log(name,email,password, rol);
 
     const userExist = await User.findOne({ email });
     if(userExist) {
@@ -34,6 +34,7 @@ const newUser = new User({
     name,
     email,
     passwordHash,
+    rol,
 })
 
 const savedUser =  await newUser.save();
@@ -55,7 +56,73 @@ await transporter.sendMail({
   from: process.env.EMAIL, // sender address
   to: savedUser.email, // list of receivers
   subject: 'Verificación de usuario', // Subject line
-  html: `<a href="${PAGE_URL}verify/${savedUser.id}/${token}">Verificar correo</a>`, // html body
+  html:`<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Verificacion de usuario - Medical Health</title>
+    <style>
+      /* Estilo General */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center; 
+      }
+  
+      /* Dark blue box styles */
+      .blue{
+        background-color: #6666ff;
+        color: #FFFFFF;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px; 
+      }
+  
+      /* Title styles */
+      .title {
+        color: #13293D;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      /* Verification link styles */
+      .verification-link {
+        display: inline-block;
+        background-color: #13293D;
+        color: #FFFFFF;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-top: 20px;
+        border-radius: 10px; /* Agrega bordes redondeados */
+      }
+
+      .text {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="blue">
+        <p>Bienvenido al consultorio medical Health</p>
+        <p class="text" >Click en el Link para que lo redireccione a la pagina.</p>
+      </div>
+      
+      <h1 class="title">Verificacion <span style="color: #13293D">Medical Health</span></h1>
+  
+      <a class="verification-link" href="${PAGE_URL}verify/${savedUser.id}/${token}" style="color: #FFFFFF;">Verify email.</a>
+    </div>
+  </body>
+  </html>
+  
+  `, // html body
 });
 
 return response.status(201).json({message:'Usuario creado, Por favor verificar tu email'});
@@ -107,5 +174,40 @@ userRouter.get('/',userExtractor,async (request, response) => {
   return response.status(200).json(user);
 });
 
+userRouter.get('/all', async (request, response) => {
+  try {
+      const users = await User.find()
+      .populate("citas")
+      .populate("pagos"); 
+      response.json(users); 
+      console.log(users);
+  } catch (error) {
+      response.status(500).json({ error: 'Error al consultar los productos.' });
+  }
+});
+
+userRouter.get('/buscar', async (request, response) => {
+  const { nombre } = request.query;
+
+  try {
+    const usuarios = await User.find({ name: { $regex: nombre, $options: 'i' } }).populate("citas");
+    return response.status(200).json(usuarios);
+  } catch (error) {
+    return response.status(500).json({ error: 'Error al buscar los usuarios.' });
+  }
+});  
+
+userRouter.get('/:id', async (request, response) => {
+  try {
+    const user = request.params.id
+  const datos = await User.findById(user).populate("citas");
+
+  //console.log(user);
+  return response.status(200).json(datos);
+  } catch (error) {
+   console.log(error); 
+  }
+  
+});
 
 module.exports = userRouter; 

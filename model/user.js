@@ -8,9 +8,18 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
+    rol:String,
     citas: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Cita'
+    }],
+    pagos: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pago'
+    }],
+    pdf: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pdf'
     }]
 });
 

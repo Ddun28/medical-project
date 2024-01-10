@@ -5,6 +5,29 @@ const inputPass = document.querySelector('#pass-input');
 const confirmPass = document.querySelector('#confirm');
 const btnRegistro = document.querySelector('#form-btn')
 const alerta = document.querySelector('#alerta');
+const togglePassword = document.getElementById("toggle-password");
+const togglePassword2 = document.getElementById("toggle-password2");
+
+togglePassword.addEventListener("click", function () {
+    if (inputPass.type === "password") {
+      inputPass.type = "text";
+      togglePassword.innerHTML = '<i class="far fa-eye-slash"></i>';
+    } else {
+      inputPass.type = "password";
+      togglePassword.innerHTML = '<i class="far fa-eye"></i>';
+    }
+  });
+
+  togglePassword2.addEventListener("click", function () {
+    if (confirmPass.type === "password") {
+      confirmPass.type = "text";
+      togglePassword2.innerHTML = '<i class="far fa-eye-slash"></i>';
+    } else {
+      confirmPass.type = "password";
+      togglePassword2.innerHTML = '<i class="far fa-eye"></i>';
+    }
+  });
+
 
 //validamos
 //validacion con regex
@@ -68,7 +91,8 @@ create.addEventListener('submit', async e =>{
         const newUser = {
             name:inputName.value,
             email:inputE.value,
-            password:inputPass.value
+            password:inputPass.value,
+            rol: 'Client'
         }        
 
         create.reset();

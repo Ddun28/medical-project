@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="icon" type="image/icon-x"  href="/img/favicon-32x32.png">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 </head>
-<body class="font-principal bg-gray-200 dark:bg-slate-800 overflow-hidden">
+<body class="font-principal bg-white dark:bg-slate-900 overflow-hidden dark:text-white">
     <div class="h-screen bg-slate-300 flex justify-center items-center"id="contenedor">
         <div class="lds-roller">
         <div></div>
@@ -26,18 +27,23 @@
     </div>
     
     <div id="sidebar"></div>
-    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
+    
+    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 h-screen dark:bg-slate-800">
         <div class="text-center">
             <h1 class="text-3xl font-bold text-gray-700">Ver Citas agendadas</h1>
         </div>
         <div class="bg-slate-300 p-3 mt-3 rounded-md">
-            <label for="countries" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Fecha</label>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <form id="filtroForm">
+                 <label for="rangoFecha" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Fecha</label>
+            <select id="rangoFecha" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option selected>Seleccione la fecha</option>
-              <option value="">Hoy</option>
-              <option value="">7 dias despues</option>
-              <option value="">Mes</option>
+              <option value="Hoy">Hoy</option>
+              <option value="7 dias despues">7 dias despues</option>
+              <option value="Mes">Mes</option>
             </select>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 mt-2">Filtrar</button>
+            <button type="reset" id="eliminarBusqueda" class="ml-1 bg-red-500 hover:bg-red-600 text-white rounded px-4 py-2 mt-2">Eliminar Busqueda</button>
+            </form>
 
             <div class="flex flex-col mt-5">
                 <div class="py-2 overflow-x-auto">
@@ -49,7 +55,7 @@
                                         Nombre Del Paciente
                                 </th>
                                 <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
-                                        Precio
+                                        Pago
                                 </th>
                                 <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
                                         Fecha
@@ -57,6 +63,9 @@
                                 <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
                                         Sintomas
                                 </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Recipe
+                            </th>
                             </tr>
                         </thead>
                         <tbody id="usuarios" class="bg-white"> 
@@ -69,7 +78,7 @@
                 </div>
               </div>
         </div>
-
+    
        
     </div>
     

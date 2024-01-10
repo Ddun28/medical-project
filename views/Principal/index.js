@@ -10,6 +10,7 @@ const formulario = document.querySelector('#citas');
 const notificacion = document.querySelector('#alerta')
 const userName = document.querySelector('#name');
 let editar = false;
+let editandoId = null;
 
 window.addEventListener("load", function(){
     var contenedor = document.querySelector("#contenedor");
@@ -35,6 +36,7 @@ inputFecha.setAttribute("min", fechaActual);
 const valPhone = /^(?:(?:00|\+)58|0)(?:2(?:12|4[0-9]|5[1-9]|6[0-9]|7[0-8]|8[1-35-8]|9[1-5]|3[45789])|4(?:1[246]|2[46]))\d{7}$/
 
 let Phoneval = false;
+
 
 //se valida que el numero de telefono sea correcto
 inputTlf.addEventListener('change', e => {
@@ -81,7 +83,7 @@ formulario.addEventListener('submit', async e => {
 })
 
 //se crear las citas y se muestran
-const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
+const crearLIst = ( Edad, Telefono, Fecha, Hora, Sintomas, id) => {
     const listado = document.createElement('div');
     listado.classList.add('bg-gray-50' ,'rounded-2xl' ,'shadow-lg', 'w-64', 'mx-16' ,'p-4', 'justify-center' ,'flex-col'
     ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-slate-900');
@@ -89,13 +91,24 @@ const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
     listado.id = id;
 
     contenedor.classList.add('flex','flex-col', 'justify-center');
-    
+    console.log(Fecha);
+    const fechaISO8601 = Fecha;
+
+const fecha = new Date(fechaISO8601);
+// Convierte la fecha a la zona horaria local
+const dia = fecha.getUTCDate().toString().padStart(2, '0');
+const mes = (fecha.getUTCMonth() + 1).toString().padStart(2, '0');
+const anio = fecha.getUTCFullYear().toString();
+const fechaFormateada = `${dia}-${mes}-${anio}`;
+console.log(fechaFormateada);
+
     listado.innerHTML = `<div class="p-4">
     <p>Edad: ${Edad}</p>
     <p>Telefono: ${Telefono}</p>
-    <p>Fecha: ${Fecha}</p>
+    <p>Fecha: ${fechaFormateada}</p>
     <p>Hora: ${Hora}</p>
     <p>Sintomas: ${Sintomas}</p>
+    </div>
     `
     const btnEditar = document.createElement('button');
     btnEditar.classList.add('text-white',
@@ -121,11 +134,10 @@ const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
     //identificador
 
     async function eliminarCita(id) {
-        createNotification(false, 'Se elimino correctamente')
-        listado.remove();
-        //se elimina de la bd
          await axios.delete(`/api/citas/${id}`);
-       
+         listado.remove();
+         //se elimina de la bd
+        createNotification(false, 'Se elimino correctamente')
     }
 
     async function cargarEdicion(id){
@@ -139,29 +151,24 @@ const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
          inputHora.value= Hora,
          inputSintomas.value= Sintomas,
  //cambiar el texto al boton
- formulario.querySelector('button[type=submit]').textContent = 'Guardar';
-
+ btnEditar.textContent = 'Guardar';
              }else {
-
                 editar = false;
-                const editcita =  {Edad: inputEdad.value,
+                const editcita =  {
+                Edad: inputEdad.value,
                 Telefono: inputTlf.value,
                 Fecha: inputFecha.value,
                 Hora: inputHora.value,
-                Sintomas: inputSintomas.value}
+                Sintomas: inputSintomas.value
+            };
                 formulario.reset();
                 await axios.patch(`/api/citas/${id}`, editcita)
-                createNotification(false, 'Contacto modificado');
+                createNotification(false, 'Cita modificada');
             console.log('editando x2');
-            
-        
-            
         }
-        
         return;
     }
-    
-    }
+}
     
     
 
@@ -173,7 +180,7 @@ const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
         });
         //console.log(data);
         data.forEach(cita => {
-            const {Edad, Telefono, Fecha, Hora, Sintomas, id} = cita;
+            const { Edad, Telefono, Fecha, Hora, Sintomas, id} = cita;
             crearLIst(Edad, Telefono, Fecha, Hora,Sintomas,id);
         })
         console.log(data);
@@ -182,7 +189,6 @@ const crearLIst = (Edad, Telefono, Fecha, Hora, Sintomas, id) => {
         console.log(error);
     }
 })();
-
 
 /*
 (async ( ) => {

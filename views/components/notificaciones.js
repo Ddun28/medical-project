@@ -5,7 +5,7 @@ div.classList.add('fixed', 'top-20', 'right-0', 'left-0');
 
 if(isError){
     div.innerHTML = `
-    <div class="max-w-7xl max-auto px-4 flex justify-center">
+    <div class="max-w-7xl max-auto px-4 flex ml-6 mt-8 justify-center">
     <p class="bg-red-500 text-white p-4 w-3/4 rounded-lg font-bold text-center">${message}</p>
   </div>
     `
@@ -14,7 +14,7 @@ if(isError){
     }, 3000);
 } else{
     div.innerHTML = `
-    <div class="max-w-7xl text-white max-auto px-4 flex justify-center">
+    <div class="max-w-7xl text-white max-auto ml-6 mt-8 px-4 flex justify-center">
     <p class="bg-green-500 p-4 w-3/4 rounded-lg font-bold text-center">${message}</p>
   </div>
     `

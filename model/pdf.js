@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const pagoSchema = new mongoose.Schema({
-
-    Referencia:String,
-    Cantidad:String,
-    metodo:String,
-    estado: {type: String,
-        enum: ['En espera', 'Aprobado'],
-        default: 'En espera'},
+const pdfSchema = new mongoose.Schema({
+    
+    Recipe:String,
+    Indicaciones:String,
+    createdAt: { 
+        type: Date, 
+        default: Date.now 
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -18,7 +18,7 @@ const pagoSchema = new mongoose.Schema({
     }
 });
 
-pagoSchema.set('toJSON', {
+pdfSchema.set('toJSON', {
 
     transform:(document, returnObject) =>{
 
@@ -30,6 +30,5 @@ pagoSchema.set('toJSON', {
     }
 })
 
-const Pago = mongoose.model('Pago', pagoSchema);
-module.exports = Pago; 
-
+const Pdf = mongoose.model('Pdf', pdfSchema);
+module.exports = Pdf;

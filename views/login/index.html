@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/icon-x"  href="/img/favicon-32x32.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>    
 
 </head>
@@ -20,10 +21,11 @@
             <form id="formulario" class="flex flex-col gap-4">
                 <input id="email-input" class="p-2 mt-5 rounded-xl border" type="text" name="email" placeholder="Email">
                 <div class="relative">
-                    <input id="password-input" class="p-2 rounded-xl border w-full" type="password" 
-                    name="contrasena" placeholder="contrasena">
-                    
-                </div>
+                    <input id="password-input" class="p-2 rounded-xl border w-full" type="password" name="contrasena" placeholder="contrasena">
+                    <span id="toggle-password" class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer">
+                      <i class="far fa-eye"></i>
+                    </span>
+                  </div>
                 
                 <button type="submit" class="bg-indigo-600 hover:bg-indigo-900 text-white rounded-2xl p-2">Login</button>
             </form>

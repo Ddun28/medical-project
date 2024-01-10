@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
 
 const citaSchema = new mongoose.Schema({
-
     Edad:String,
     Telefono:String,
-    Fecha:String,
+    Fecha: {
+        type:Date
+    },
     Hora:String,
     Sintomas:String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-      }
+      },
+    pagos: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pago'
+    }
 });
 
 citaSchema.set('toJSON', {
