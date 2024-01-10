@@ -27,7 +27,7 @@
     "pdfkit": "^0.14.0"
   },
   "engines": {
-    "node": "18.16.o"
+    "node": "18.16.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
