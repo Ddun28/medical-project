@@ -10,7 +10,6 @@ const mostrarPagos = document.querySelector("#pagos");
   const { data } = await axios.get(`/api/pagos/${id}`);
   console.log(data);
 
-  const mostrarPagos = document.getElementById('pagos'); // Reemplaza 'mostrarPagos' con el ID o selector correcto
 
   data.forEach(pago => {
     const viewPagos = document.createElement('div');
@@ -24,28 +23,51 @@ const mostrarPagos = document.querySelector("#pagos");
     if (pago.metodo === 'Efectivo') {
       content += `<p class="font-normal text-gray-700 dark:text-gray-400">Cantidad Pagada: ${pago.Cantidad}</p>`;
       content += `<p class="font-normal text-gray-700 dark:text-gray-400">Metodo de pago: ${pago.metodo}</p>`;
-      content += `<p class="font-medium text-gray-700 dark:text-gray-400">${pago.estado}</p>`;
+      content += `<p class="font-medium text-gray-700 dark:text-gray-400">Estado del Pago: ${pago.estado}</p>`;
 
     } else {
       content += `<h5 class="mb-2 font-normal tracking-tight text-gray-900 dark:text-white">Referencia del pago: ${pago.Referencia}</h5>`;
       content += `<p class="font-normal text-gray-700 dark:text-gray-400">Cantidad Pagada: ${pago.Cantidad}</p>`;
       content += `<p class="font-normal text-gray-700 dark:text-gray-400">Metodo de pago: ${pago.metodo}</p>`;
-      content += `<p class="font-medium text-gray-700 dark:text-gray-400">${pago.estado}</p>`;
+      content += `<p class="font-medium text-gray-700 dark:text-gray-400">Estado del Pago: ${pago.estado}</p>`;
     }
 
     viewPagos.innerHTML = content;
     mostrarPagos.appendChild(viewPagos);
 
-     // Agregar el código del botón aquí
-    const button = document.createElement('button');
-    button.classList.add('border', 'rounded', 'text-white', 'bg-green-500', 'p-1', 'mt-1', 'flex', 'justify-center');
-    button.innerText = 'Aprobar Pago';
-    button.addEventListener('click', async () => {
-      // Lógica para aprobar el pago y generar el código QR
-      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Aprobado' });
-      // generarCodigoQR();
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('flex');
+    
+    const buttonAprobar = document.createElement('button');
+    buttonAprobar.classList.add('border', 'rounded', 'text-white', 'bg-green-500', 'p-1', 'mt-1', 'flex', 'justify-center');
+    buttonAprobar.innerText = 'Aprobar';
+    buttonAprobar.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Aprobada' });
       location.reload();
     });
-    viewPagos.appendChild(button);
+    buttonContainer.appendChild(buttonAprobar);
+    
+    const buttonCancelar = document.createElement('button');
+    buttonCancelar.classList.add('border', 'rounded', 'text-white', 'bg-red-500', 'p-1', 'mt-1', 'flex', 'justify-center');
+    buttonCancelar.innerText = 'Cancelar';
+    buttonCancelar.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Cancelada' });
+      location.reload();
+    });
+    buttonContainer.appendChild(buttonCancelar);
+    
+    const buttonPendiente = document.createElement('button');
+    buttonPendiente.classList.add('border', 'rounded', 'text-white', 'bg-yellow-500', 'p-1', 'mt-1', 'flex', 'justify-center');
+    buttonPendiente.innerText = 'Pendiente';
+    buttonPendiente.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await axios.put(`/api/pagos/${pago.id}`, { estado: 'En espera' });
+      location.reload();
+    });
+    buttonContainer.appendChild(buttonPendiente);
+    
+    viewPagos.appendChild(buttonContainer);
   });
 })();

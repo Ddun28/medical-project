@@ -47,7 +47,7 @@ async function mostrarProductos() {
     let pago = id;
     let user = id;
     citas.forEach((cita) => {
-      const { Edad, Fecha, Sintomas, id: citaId } = cita;
+      const { Edad, Cedula,Fecha, Sintomas, id: citaId } = cita;
       const fechaISO8601 = Fecha;
       const row = document.createElement('tr');
       row.id = citaId;
@@ -63,10 +63,10 @@ async function mostrarProductos() {
       row.innerHTML += `<td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
         <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${name}</p>
       </td>
-      
+
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-        <a href="/verify-pago/${pago}" class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">Verificar Pago</a>
-      </td>
+      <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Cedula}</p>
+    </td>
       
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
         <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${fechaFormateada}</p>
@@ -77,27 +77,30 @@ async function mostrarProductos() {
       </td>
       
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-        <a href="/agendar-recipe/${agendar}/${user}" class="text-teal-600 mr-5 hover:text-teal-900">Agendar Recipe</a>
-      </td>`;
+        <a href="/agendar-recipe/${agendar}/${user}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Agendar Recipe</a>
+        <a href="/verify-pago/${pago}" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Verificar Pago</a>
+      </td>
+      `;
 
       listado.appendChild(row);
     });
   });
 }
 async function actualizarTablaCitas(citas) {
-    // Obtener el tbody de la tabla
     // Eliminar las filas existentes
     while (listado.firstChild) {
       listado.removeChild(listado.firstChild);
     }
+    console.log(citas);
     // Crear las nuevas filas con los resultados filtrados
     citas.forEach(cita => {
-      const { user, pagos, citas, Telefono, Fecha, Hora, Sintomas, id } = cita;
+      const { user, pagos, citas, Cedula,Telefono, Fecha, Hora, Sintomas, id } = cita;
       const row = document.createElement('tr');
       row.id = id;
      // let agendar = id;
-  
-    
+      let pago = user.id;
+      let userId = user.id;
+    let agendar = id
         const fechaISO8601 = Fecha;
   
         const fecha = new Date(fechaISO8601);
@@ -115,9 +118,8 @@ console.log(user.pagos);
    </td>
    
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-    <a href="/verify-pago/${user.pagos}" class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">Revisar Pago</a>
-   </td>
-   
+   <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Cedula}</p>
+  </td>
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
     <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${fechaFormateada}</p>
    </td>
@@ -126,8 +128,9 @@ console.log(user.pagos);
     <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Sintomas}</p>
    </td>
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-    <a href="/agendar-recipe/${user.id}" class="text-teal-600 mr-5 hover:text-teal-900">Agendar Recipe</a>
-    </td>
+        <a href="/agendar-recipe/${agendar}/${userId}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Agendar Recipe</a>
+        <a href="/verify-pago/${pago}" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Verificar Pago</a>
+      </td>
           `;
           listado.appendChild(row);
         });

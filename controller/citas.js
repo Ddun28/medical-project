@@ -41,10 +41,11 @@ citaRouter.get('/:id', async (request, response) => {
 
 citaRouter.post('/', async (request, response) => {
    const user = request.user;
-   const {Edad,Telefono,Fecha,Hora, Sintomas} = request.body;
+   const {Edad,Telefono, Cedula,Fecha,Hora, Sintomas} = request.body;
    const newCita = new Cita({
     Edad,
     Telefono,
+    Cedula,
     Fecha,
     Hora,
     Sintomas,

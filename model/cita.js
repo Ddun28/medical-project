@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const citaSchema = new mongoose.Schema({
     Edad:String,
     Telefono:String,
+    Cedula:String,
     Fecha: {
         type:Date
     },
