@@ -60,8 +60,9 @@ const sidebarHistorial = () =>{
         </button>
 
         <!-- Logo -->
-        <div class="ml-1 items-center">
-            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28">
+        <div class="md:mr-10">
+            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+            <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
 
     </div>
@@ -104,8 +105,9 @@ const sidebarPagos = () =>{
         </button>
 
         <!-- Logo -->
-        <div class="ml-1 items-center">
-            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28">
+        <div class="md:mr-10">
+            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+            <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
 
     </div>
@@ -148,8 +150,9 @@ const sidebarAdmin = () => {
         </button>
 
         <!-- Logo -->
-        <div class="ml-1 items-center">
-            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28">
+        <div class="md:mr-10">
+            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+            <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
 
     </div>
@@ -170,7 +173,7 @@ const sidebarAdmin = () => {
             <i class="fas fa-wallet"></i>
             <span>Historial</span>
         </a>
-        <a href="/verify-pago/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+        <a href="/verify/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>
             <span>Verificar de Pagos</span>
         </a>
@@ -192,8 +195,9 @@ const sidebarHistory = () => {
         </button>
 
         <!-- Logo -->
-        <div class="ml-1 items-center">
-            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28">
+        <div class="md:mr-10">
+            <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+            <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
 
     </div>
@@ -210,12 +214,12 @@ const sidebarHistory = () => {
             <span>Inicio</span>
         </a>
 
-        <a href="#" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
+        <a href="/agendar" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
         <i class="fas fa-wallet text-white"></i>
         <span class="-mr-1 font-medium">Agendar Recipes</span>
     </a>
 
-        <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+        <a href="/verify/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>
             <span>Verificar Pagos</span>
         </a>
@@ -228,17 +232,68 @@ const sidebarHistory = () => {
 </div>
     `
     }
+
+    const sidebarVerify = () => {
+        sidebar.innerHTML = `
+        <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+        <div class="flex justify-between items-center px-9">
+            <!-- Ícono de Menú -->
+            <button id="menuBtn">
+                <i class="fas fa-bars text-cyan-500 text-lg"></i>
+            </button>
+    
+            <!-- Logo -->
+            <div class="md:mr-10">
+                <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
+                <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
+            </div>
+    
+        </div>
+    </nav>
+    
+    <!-- Barra lateral -->
+    <div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
+        <!-- Items -->
+        <div class="p-4 space-y-4">
+            <!-- Inicio -->
+            <a href="/admin/" aria-label="dashboard"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+                <i class="fas fa-home"></i>
+                <span>Inicio</span>
+            </a>
+
+            <a href="/agendar/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+                <i class="fas fa-user"></i>
+                <span>Agendar Recipes</span>
+            </a>
+    
+            <a href="#" class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
+            <i class="fas fa-wallet text-white"></i>
+            <span class="-mr-1 font-medium">Verificar Pagos</span>
+        </a>
+              
+            <a href="/login" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar sesión</span>
+            </a>
+        </div>
+    </div>
+        `
+        }
+
 //agregar las rutas para los componentes 
 if(window.location.pathname === '/principal/'){
     crearSidebar();
-}else if(window.location.pathname === '/principal/historial/'){
+}else if(window.location.pathname === '/historial/'){
     sidebarHistorial();
-}else if(window.location.pathname === '/principal/pagos/'){
+}else if(window.location.pathname === '/pagos/'){
     sidebarPagos();
 }else if(window.location.pathname === '/admin/'){
     sidebarAdmin();
 }else if(window.location.pathname ==='/agendar/'){
     sidebarHistory();
+}else if(window.location.pathname === '/verify/'){
+    sidebarVerify();
 }
 
 

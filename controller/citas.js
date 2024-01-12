@@ -24,6 +24,17 @@ citaRouter.get('/all', async (request, response) => {
     }
 });
 
+citaRouter.get('/buscar', async (request, response) => {
+  const { cedula } = request.query;
+
+  try {
+    const citas = await Cita.find({ Cedula: cedula }).populate("user").populate("pagos");
+    return response.status(200).json(citas);
+  } catch (error) {
+    return response.status(500).json({ error: 'Error al buscar las citas.' });
+  }
+});
+
 citaRouter.get('/:id', async (request, response) => {
   const citaId = request.params.id;
 

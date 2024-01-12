@@ -6,9 +6,35 @@ window.addEventListener("load", function(){
     contenedor.classList.add('hidden');
 })
 
+const filtroFormCedula = document.querySelector("#filtroFormCedula");
+
+filtroFormCedula.addEventListener('submit', e => {
+  e.preventDefault();
+  
+  const cedula = document.querySelector("#cedula").value; 
+  
+  if (cedula === '') {
+    return;
+  } else {
+    filtrarCitasPorCedula(cedula); 
+  }
+});
+
+function filtrarCitasPorCedula(cedula) {
+  axios.get(`/api/citas/buscar?cedula=${cedula}`)
+    .then(response => {
+      const citas = response.data;
+      console.log(citas);
+      actualizarTablaCitas(citas);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
  const filtroForm = document.getElementById('filtroForm');
- filtroForm.addEventListener('submit', function(event) {
-   event.preventDefault();
+ filtroForm.addEventListener('submit', e => {
+   e.preventDefault();
    const rangoFecha = document.getElementById('rangoFecha').value;
    if (rangoFecha === 'Seleccione la fecha') {
     return; // Hacer un return si el campo de selección no se ha seleccionado
@@ -137,17 +163,17 @@ console.log(user.pagos);
   
       };
    
-      // Obtén una referencia al botón de eliminar
+      
 const eliminarBusquedaBtn = document.getElementById('eliminarBusqueda');
 
-// Agrega un evento de clic al botón
+
 eliminarBusquedaBtn.addEventListener('click', () => {
   eliminarBusquedaYMostrarProductos();
 });
 
 // Función para eliminar la búsqueda y mostrar los productos
 function eliminarBusquedaYMostrarProductos() {
-  // Aquí puedes agregar lógica para eliminar la búsqueda, por ejemplo, limpiando el valor del campo de búsqueda o restableciendo los filtros aplicados.
+  
   while (listado.firstChild) {
     listado.removeChild(listado.firstChild);
   }

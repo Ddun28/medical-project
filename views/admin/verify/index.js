@@ -1,16 +1,42 @@
 window.addEventListener("load", function(){
     var contenedor = document.querySelector("#contenedor");
-    console.log('entra');
+    //console.log('entra');
+    var body = document.querySelector("body");
+    body.classList.remove('overflow-hidden')
     contenedor.classList.add('hidden');
 })
 
+const formCedula = document.querySelector("#filtroForm");   
 const mostrarPagos = document.querySelector("#pagos");
-(async () => {
-  const id = window.location.pathname.split('/')[2];
-  const { data } = await axios.get(`/api/pagos/${id}`);
-  console.log(data);
 
+formCedula.addEventListener('submit', async e => {
+  e.preventDefault();
+  
+  const cedula = document.querySelector("#cedula").value; 
+  
+  if (cedula === '') {
+    return;
+  } else {
+    try {
+        const {data} = await axios.get(`/api/citas/buscar?cedula=${cedula}`)
+      console.log(data);    
+      
+      data.forEach(i => {
+        const {user} = i;
+        
+      
+        let id = user.id;
+    filtrarPagosPorCedula(id);
+  }); 
+    } catch (error) {
+        console.log(error);
+    }
+  }
+});
 
+async function filtrarPagosPorCedula(id) {
+ const {data} = await axios.get(`/api/pagos/${id}`)
+  //console.log(data);
   data.forEach(pago => {
     const viewPagos = document.createElement('div');
     viewPagos.classList.add(
@@ -70,4 +96,20 @@ const mostrarPagos = document.querySelector("#pagos");
     
     viewPagos.appendChild(buttonContainer);
   });
-})();
+}
+
+      // Obtén una referencia al botón de eliminar
+      const eliminarBusquedaBtn = document.getElementById('eliminarBusqueda');
+
+      // Agrega un evento de clic al botón
+      eliminarBusquedaBtn.addEventListener('click', () => {
+        eliminarBusquedaYMostrarProductos();
+      });
+      
+      // Función para eliminar la búsqueda y mostrar los productos
+      function eliminarBusquedaYMostrarProductos() {
+        
+        while (mostrarPagos.firstChild) {
+          mostrarPagos.removeChild(mostrarPagos.firstChild);
+        }
+      }

@@ -33,8 +33,16 @@
             <h1 class="text-3xl font-bold text-gray-700">Ver Citas agendadas</h1>
         </div>
         <div class="bg-slate-300 p-3 mt-3 rounded-md">
+            <form id="filtroFormCedula">
+                <label for="cedula" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Busqueda por Cedula</label>
+                <div class="flex">
+                 <input id="cedula" type="text" class="bg-gray-50 border mr-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+               dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cedula del Paciente"></input>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 mt-2">Buscar</button>
+                </div>
+           </form>
             <form id="filtroForm">
-                 <label for="rangoFecha" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Fecha</label>
+                 <label for="rangoFecha" class="block mb-2 mt-2 font-medium text-lg text-gray-900 dark:text-white">Fecha</label>
             <select id="rangoFecha" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option selected>Seleccione la fecha</option>
               <option value="Hoy">Hoy</option>

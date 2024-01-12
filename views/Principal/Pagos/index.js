@@ -31,6 +31,8 @@ buttonPaypal.addEventListener("click", () => {
 
 const text = document.createElement('p')
 
+
+//eventos del modal
 buttonPago.addEventListener('click', () => {
     //openModal();
     modalPago.classList.remove('hidden');
@@ -54,15 +56,11 @@ buttonCash.addEventListener('click', () => {
     modalCash.classList.remove('hidden');
 })
 
-//eventos del modal
-
-
-//agregar pagos a la db 
-
-
 const addPago = document.querySelector('agg-Pago');
 const cantidad = document.querySelector('#cantidad');
 const referencia = document.querySelector('#referencia');
+
+//agregar pagos a la db 
 formularioEfectivo.addEventListener('submit', async e  => {
     e.preventDefault();
     try {
@@ -93,21 +91,22 @@ const crearReciboEfectivo = (Cantidad, metodo, estado,id) => {
     List.classList.add('bg-gray-50', 'shadow-lg', 'w-64', 'mx-16', 'p-4', 'justify-center', 'flex-col', 'gap-3', 'md:w-64', 'px-2', 'flex', 'm-2', 'dark:bg-slate-900');
 
     List.innerHTML = `<div class="p-3">
-    <p>Cantidad Pagada en Efectivo: ${Cantidad}</p>
+    <p>Cantidad Pagada: ${Cantidad}</p>
     <p>Metodo de Pago: ${metodo}</p>
-    <p>Metodo de Pago: ${estado}</p>
+    <p>Estado del pago: ${estado}</p>
     </div>`;
 
     container.appendChild(List);
 
     
     if(estado === "Aprobado"){
-      // Create a container for the QR code
+      
 const qrContainer = document.createElement('div');
 qrContainer.id = `qr-${id}`;
- // Append the QR code container to the list
 List.appendChild(qrContainer);
-// Generate the QR code
+qrContainer.classList.add('flex', 'justify-center', 'items-center"');
+
+// Genera el Qr
 const qr = new QRCode(document.getElementById(`qr-${id}`), {
 text: `Metodo de pago: ${metodo}\nEstado del pago: ${estado}`,
 width: 128,
@@ -280,8 +279,11 @@ function resultMessage(message) {
         //console.log(data);
         data.forEach(i => {
             const { Referencia, Cantidad, estado ,metodo,id} = i;
-            crearRecibo(Referencia, Cantidad, metodo,estado ,id);
-            //crearReciboEfectivo( Cantidad, metodo,estado ,id);
+            if (metodo === 'Efectivo') {
+              crearReciboEfectivo(Cantidad, metodo,estado ,id);
+          } else {
+              crearRecibo(Referencia, Cantidad, metodo,estado ,id);
+          }
         })
         console.log(data);
     } catch (error) {
