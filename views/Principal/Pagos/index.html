@@ -18,7 +18,7 @@
     <script type="text/javascript">ExchangeMonitorWidgetUnique("ve","bcv","100px","light",false);</script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
-<body class="font-principal bg-gray-200 dark:bg-slate-800 overflow-hidden">
+<body class="font-principal bg-white dark:bg-slate-900 overflow-hidden dark:text-white">
     <div class="h-screen bg-slate-300 flex justify-center items-center"id="contenedor">
         <div class="lds-roller">
         <div></div>
@@ -33,12 +33,12 @@
     </div>
     <div id="sidebar"></div>
 
-    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% mt-5 mx-2">
+    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 dark:bg-slate-800">
         <div class="text-center">
             <h1 class="text-3xl font-bold text-gray-700">Metodos de pagos</h1>
         </div>
    <!--Botones opciones de pago-->
-        <div class="my-4 flex justify-between">
+        <div class="my-4 flex lg:justify-between md:justify-between">
             <div>
                  <h1 class="text-xl font-medium text-gray-800">Elija el metodo de pago</h1>
                  <div class="flex mt-4 text-lg">
@@ -59,7 +59,7 @@
                 <!-- ExchangeMonitor.net Widget END -->
         </div>
 
-        <div class="flex h-auto lg:justify-around justify-evenly mt-5">
+        <div class="flex h-auto justify-center flex-col  space-y-4  items-center md:justify-around md:flex-row lg:flex-row lg:justify-around mt-5">
             <button id="Paypal" class="bg-gradient-to-r from-sky-600 to-cyan-400 rounded text-white text-center font-medium w-40 h-14 flex justify-center items-center shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-paypal  mr-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" 
                 fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 13l2.5 0c2.5 0 5 -2.5 5 -5c0 -3 -1.9 -5 -5 
@@ -85,7 +85,7 @@
             </button>
         </div>
 
-        <div id="container" class="flex justify-center m-4"></div>
+        <div id="container" class="flex justify-center items-center m-4 flex-col md:flex-row lg:flex-row"></div>
         <!--Modal pago movil-->
         <div id="modal-componet-container" class="hidden fixed inset-0">
           <div class="modal-flex-container flex 

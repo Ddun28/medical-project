@@ -88,4 +88,45 @@ pdfRouter.get('/', async (request, response) => {
         console.log(error);
       }
 });
+
+pdfRouter.get('/all', async (request, response) => {
+  try {
+    const userId = request.user;
+      
+  
+      const user = await Pdf.findOne({user: userId});
+      if (!user) {
+        return response.status(404).json({ error: 'Usuario no encontrado' });
+      }
+  
+      // Generar el PDF
+      const doc = new PDFDocument();
+  
+      // Agregar contenido al PDF
+      // Encabezado del PDF
+      doc.fontSize(20).text('Medical Health', { align: 'center' });
+      doc.moveDown();
+      doc.fontSize(14).text('Consultorio de Medicina', { align: 'center' });
+      doc.moveDown(2);
+      doc.fontSize(16).text('Recipe:', { underline: false });
+      doc.fontSize(12).text(user.Recipe);
+      doc.moveDown();
+      doc.fontSize(16).text('Indicaciones:', { underline: false });
+      doc.fontSize(12).text(user.Indicaciones);
+  
+      // Finalizar el PDF
+      doc.end();
+  
+      // Configurar los encabezados de la respuesta
+      response.setHeader('Content-Type', 'application/pdf');
+      response.setHeader('Content-Disposition', 'inline; filename="recipe.pdf"');
+  
+      // Enviar el PDF como respuesta
+      doc.pipe(response);
+  
+} catch (error) {
+  console.log(error);
+}
+});
+
 module.exports = pdfRouter;

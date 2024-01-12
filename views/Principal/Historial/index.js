@@ -5,3 +5,4 @@ window.addEventListener("load", function(){
     body.classList.remove('overflow-hidden')
     contenedor.classList.add('hidden');
 })
+

@@ -6,38 +6,43 @@ window.addEventListener("load", function(){
     contenedor.classList.add('hidden');
 })
 
-const filtroForm = document.getElementById('filtroForm');
-const inputName = document.querySelector('#nombre')
 
-var id
-filtroForm.addEventListener('submit', async e => {
-    e.preventDefault();
 
-    const nombrePaciente = inputName.value;
+const formCedula = document.querySelector("#filtroForm");   
+const userNameElement = document.querySelector('#name');
+const edadElement = document.querySelector('#edad');
+var id;
+
+formCedula.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  const cedula = document.querySelector("#cedula").value;
+
+  if (cedula === '') {
+    return;
+  } else {
     try {
-        const response = await axios.get(`/api/users/buscar`, { params: { nombre: nombrePaciente } });
-        const data = response.data;
-        const userName = document.querySelector('#name');
-        const edad = document.querySelector('#edad');     
-        //console.log(data.name); 
-        data.forEach(user => {
-            const { name, citas } = user;
-            id = user.id
-            userName.innerHTML = `${name}`;
+      const { data } = await axios.get(`/api/citas/buscar?cedula=${cedula}`);
+      console.log(data);
 
-            citas.forEach(cita => {
-                const { Edad } = cita;
-                //console.log(cita);
+      data.forEach(i => {
+        const { Edad, user } = i;
+        const userName = user.name;
+        const edad = Edad;
 
-                edad.innerHTML = `Edad: ${Edad}`;
-            });
-        });
-        formPdf.dataset.userId = id; 
-        console.log(id);
+        userNameElement.textContent = userName;
+        edadElement.textContent = edad;
+
+       id = user.id;
+      });
+
+      formPdf.dataset.userId = id;
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
+  }
 });
+
 
 const inputRecipe = document.querySelector("#recipe");
 const inputIndicaciones = document.querySelector("#indicaciones");
@@ -62,3 +67,22 @@ formPdf.addEventListener('submit', async e =>
     console.log(error);
   }
 });
+
+const eliminarBusquedaBtn = document.getElementById('eliminarBusqueda');
+
+// Agrega un evento de clic al botón
+eliminarBusquedaBtn.addEventListener('click', () => {
+  eliminarBusquedaYMostrarProductos();
+});
+
+// Función para eliminar la búsqueda
+function eliminarBusquedaYMostrarProductos() {
+ 
+  while (userNameElement.firstChild) {
+    userNameElement.removeChild(userNameElement.firstChild);
+  }
+  
+  while (edadElement.firstChild) {
+    edadElement.removeChild(edadElement.firstChild);
+  }
+}

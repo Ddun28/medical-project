@@ -98,10 +98,10 @@ async function filtrarPagosPorCedula(id) {
   });
 }
 
-      // Obtén una referencia al botón de eliminar
+      
       const eliminarBusquedaBtn = document.getElementById('eliminarBusqueda');
 
-      // Agrega un evento de clic al botón
+      
       eliminarBusquedaBtn.addEventListener('click', () => {
         eliminarBusquedaYMostrarProductos();
       });

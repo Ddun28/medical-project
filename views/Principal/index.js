@@ -151,6 +151,7 @@ console.log(fechaFormateada);
 
          inputEdad.value= Edad,
          inputTlf.value= Telefono,
+         inputCedula.value= Cedula,
          inputFecha.value= Fecha,
          inputHora.value= Hora,
          inputSintomas.value= Sintomas,
@@ -160,6 +161,7 @@ console.log(fechaFormateada);
                 editar = false;
                 const editcita =  {
                 Edad: inputEdad.value,
+                Cedula: inputCedula.value,
                 Telefono: inputTlf.value,
                 Fecha: inputFecha.value,
                 Hora: inputHora.value,
@@ -185,7 +187,7 @@ console.log(fechaFormateada);
         //console.log(data);
         data.forEach(cita => {
             const { Edad, Cedula,Telefono, Fecha, Hora, Sintomas, id} = cita;
-            crearLIst(Edad, Telefono, Fecha, Hora,Sintomas,id);
+            crearLIst(Edad, Cedula,Telefono, Fecha, Hora,Sintomas,id);
         })
         console.log(data);
     } catch (error) {

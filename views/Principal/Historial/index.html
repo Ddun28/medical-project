@@ -32,10 +32,14 @@
             <h1 class="text-3xl font-bold text-gray-700">Historial</h1>
         </div>
             <div class="flex flex-col items-center justify-center h-screen">
-                <div class="flex flex-col items-center justify-center">
+                <div class="flex items-center justify-center">
                     <a href="/api/pdf" id="download" download class="bg-blue-500 mb-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Descargar Recipe
                     </a>
+                    <button id="showMoreButton" class="bg-blue-500 mb-2 ml-7 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Mostrar historial de recipes
+                    </button>
+                    <div id="recipesContainer"></div>
                 </div>
                   <embed src="/api/pdf" id="vista" type="application/pdf" width="80%" height="500px">
     </div>

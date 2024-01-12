@@ -19,7 +19,7 @@ const cantidadEfectivo = document.querySelector('#cantidad-efectivo');
 window.addEventListener("load", function(){
     var contenedor = document.querySelector("#contenedor");
     body.classList.remove('overflow-hidden')
-    console.log('entra');
+   // console.log('entra');
     contenedor.classList.add('hidden');
 })
 
@@ -149,7 +149,7 @@ const crearRecibo = (Referencia, Cantidad, metodo, estado,id) => {
     <p>Metodo de Pago: ${metodo}</p>
     <p>Estado: ${estado}</p>
     </div>`
-
+console.log(estado);
     container.appendChild(List)
     
     if(estado === "Aprobado"){
@@ -161,7 +161,7 @@ const crearRecibo = (Referencia, Cantidad, metodo, estado,id) => {
   List.appendChild(qrContainer);
   // Generate the QR code
   const qr = new QRCode(document.getElementById(`qr-${id}`), {
-    text: `Nro de Referencia: ${Referencia}\nEstado del pago: ${estado}`,
+    text: `Referencia: ${Referencia}\nEstado: ${estado}`,
     width: 128,
     height: 128
   });
@@ -285,7 +285,7 @@ function resultMessage(message) {
               crearRecibo(Referencia, Cantidad, metodo,estado ,id);
           }
         })
-        console.log(data);
+       // console.log(data);
     } catch (error) {
         window.location.pathname = '/login';
         console.log(error);
@@ -295,7 +295,7 @@ function resultMessage(message) {
 
 (async ( ) => {    
     const {data} = await axios.get('/api/citas');
-    console.log(data);
+    //console.log(data);
     price.innerHTML =`$${data.length * 40} `;
   })();
 

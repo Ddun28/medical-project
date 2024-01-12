@@ -6,7 +6,7 @@ const pagoSchema = new mongoose.Schema({
     Cantidad:String,
     metodo:String,
     estado: {type: String,
-        enum: ['En espera', 'Aprobada', 'Cancelada'],
+        enum: ['En espera', 'Aprobado', 'Cancelado'],
         default: 'En espera'},
     user: {
         type: mongoose.Schema.Types.ObjectId,

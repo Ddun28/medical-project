@@ -5,7 +5,7 @@ const crearSidebar = () =>{
     <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
-        <button id="menuBtn">
+        <button id="menuBtn" class="lg:hidden">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button> 
        
@@ -15,7 +15,7 @@ const crearSidebar = () =>{
       </button>
         
         <!-- Logo -->
-        <div class="md:mr-10">
+        <div class="md:ml-auto md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -55,12 +55,12 @@ const sidebarHistorial = () =>{
     <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
-        <button id="menuBtn">
+        <button id="menuBtn" class="lg:hidden">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button>
 
         <!-- Logo -->
-        <div class="md:mr-10">
+        <div class="md:ml-auto md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -100,12 +100,12 @@ const sidebarPagos = () =>{
     <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
-        <button id="menuBtn">
+        <button id="menuBtn" class="lg:hidden">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button>
 
         <!-- Logo -->
-        <div class="md:mr-10">
+        <div class="md:ml-auto md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -145,12 +145,12 @@ const sidebarAdmin = () => {
     <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
-        <button id="menuBtn">
+        <button id="menuBtn" class="lg:hidden">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button>
 
         <!-- Logo -->
-        <div class="md:mr-10">
+        <div class="md:ml-auto md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -190,12 +190,12 @@ const sidebarHistory = () => {
     <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
-        <button id="menuBtn">
+        <button id="menuBtn" class="lg:hidden">
             <i class="fas fa-bars text-cyan-500 text-lg"></i>
         </button>
 
         <!-- Logo -->
-        <div class="md:mr-10">
+        <div class="md:ml-auto md:mr-10">
             <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
             <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
         </div>
@@ -238,12 +238,12 @@ const sidebarHistory = () => {
         <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
         <div class="flex justify-between items-center px-9">
             <!-- Ícono de Menú -->
-            <button id="menuBtn">
+            <button id="menuBtn" class="lg:hidden">
                 <i class="fas fa-bars text-cyan-500 text-lg"></i>
             </button>
     
             <!-- Logo -->
-            <div class="md:mr-10">
+            <div class="md:ml-auto md:mr-10">
                 <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
                 <img src="/img/Blue Minimalist Medical Logo (2).png" alt="logo" class="h-20 w-28 hidden dark:block">
             </div>

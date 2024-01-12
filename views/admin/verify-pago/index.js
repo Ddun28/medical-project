@@ -43,7 +43,7 @@ const mostrarPagos = document.querySelector("#pagos");
     buttonAprobar.innerText = 'Aprobar';
     buttonAprobar.addEventListener('click', async e => {
       e.preventDefault();
-      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Aprobada' });
+      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Aprobado' });
       location.reload();
     });
     buttonContainer.appendChild(buttonAprobar);
@@ -53,7 +53,7 @@ const mostrarPagos = document.querySelector("#pagos");
     buttonCancelar.innerText = 'Cancelar';
     buttonCancelar.addEventListener('click', async e => {
       e.preventDefault();
-      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Cancelada' });
+      await axios.put(`/api/pagos/${pago.id}`, { estado: 'Cancelado' });
       location.reload();
     });
     buttonContainer.appendChild(buttonCancelar);
