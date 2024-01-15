@@ -36,15 +36,17 @@
                     <a href="/api/pdf" id="download" download class="bg-blue-500 mb-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Descargar Recipe
                     </a>
-                    <button id="showMoreButton" class="bg-blue-500 mb-2 ml-7 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Mostrar historial de recipes
-                    </button>
-                    <div id="recipesContainer"></div>
+                    <button id="mostrarPdf" class="bg-blue-500 mb-2 ml-5 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Mostrar Historial de recipes</button>
                 </div>
                   <embed src="/api/pdf" id="vista" type="application/pdf" width="80%" height="500px">
-    </div>
+      </div>
+      <div class="flex justify-center">
+        <div id="pdf-container" class="hidden grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4"></div>
+      </div>
+</div>
 
     <script src="../../components/sidebar.js"></script>
+    <script src="../components/notificaciones.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

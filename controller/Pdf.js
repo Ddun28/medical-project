@@ -3,6 +3,7 @@ const Pdf = require('../model/pdf');
 const User = require('../model/user');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const Cita = require('../model/cita');
 
 pdfRouter.post('/:id', async (request, response) => {
     try {
@@ -62,7 +63,6 @@ pdfRouter.get('/', async (request, response) => {
             // Generar el PDF
             const doc = new PDFDocument();
         
-            // Agregar contenido al PDF
             // Encabezado del PDF
             doc.fontSize(20).text('Medical Health', { align: 'center' });
             doc.moveDown();
@@ -88,13 +88,29 @@ pdfRouter.get('/', async (request, response) => {
         console.log(error);
       }
 });
+  
 
 pdfRouter.get('/all', async (request, response) => {
   try {
-    const userId = request.user;
-      
+    const user = request.user;
+
+    const pdfs = await Pdf.find({ user: user.id });
+    if (!pdfs) {
+      return response.status(404).json({ error: 'No se encontraron PDFs' });
+    }
+
+    response.json(pdfs);
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+pdfRouter.get('/:id', async (request, response) => {
+  try {
+    const userId = request.params.id;
   
-      const user = await Pdf.findOne({user: userId});
+      const user = await Pdf.findById(userId);
       if (!user) {
         return response.status(404).json({ error: 'Usuario no encontrado' });
       }
@@ -102,7 +118,6 @@ pdfRouter.get('/all', async (request, response) => {
       // Generar el PDF
       const doc = new PDFDocument();
   
-      // Agregar contenido al PDF
       // Encabezado del PDF
       doc.fontSize(20).text('Medical Health', { align: 'center' });
       doc.moveDown();
@@ -127,6 +142,23 @@ pdfRouter.get('/all', async (request, response) => {
 } catch (error) {
   console.log(error);
 }
+});
+
+pdfRouter.delete('/:id', async (request, response) => {
+  try {
+  const user = request.user;
+
+  await Pdf.findByIdAndDelete(request.params.id);
+
+  user.pdf = user.pdf.filter(id => id.toString() !== request.params.id);
+  await user.save();
+
+  return response.status(204);
+
+  } catch (error) {
+    console.log(error);
+    response.status(500).json({ error: 'Error interno del servidor' });
+  }
 });
 
 module.exports = pdfRouter;
