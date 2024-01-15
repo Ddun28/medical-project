@@ -38,7 +38,7 @@ app.use('/components', express.static(path.resolve('views', 'components')));
 app.use('/admin', adminExtractor, express.static(path.resolve('views', 'admin')));
 app.use('/historial', express.static(path.resolve('views', 'Principal', 'Historial')));
 app.use('/pagos', express.static(path.resolve('views', 'Principal', 'Pagos')));
-app.use('/verify-pago/:id', adminExtractor,express.static(path.resolve('views', 'admin', 'verify-pago')));
+app.use('/verify-pago/:id', express.static(path.resolve('views', 'admin', 'verify-pago')));
 app.use('/verify',adminExtractor, express.static(path.resolve('views', 'admin', 'verify')));
 app.use('/agendar-recipe/:id/:id', adminExtractor,express.static(path.resolve('views', 'admin', 'history')));
 app.use('/agendar',adminExtractor, express.static(path.resolve('views', 'admin', 'history-all')));
