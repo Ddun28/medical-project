@@ -173,7 +173,7 @@ const sidebarAdmin = () => {
             <i class="fas fa-wallet"></i>
             <span>Historial</span>
         </a>
-        <a href="/verify/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+        <a href="/verificacion/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>
             <span>Verificar de Pagos</span>
         </a>
@@ -219,7 +219,7 @@ const sidebarHistory = () => {
         <span class="-mr-1 font-medium">Agendar Recipes</span>
     </a>
 
-        <a href="/verify/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
+        <a href="/verificacion/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>
             <span>Verificar Pagos</span>
         </a>
