@@ -105,13 +105,22 @@ const qrContainer = document.createElement('div');
 qrContainer.id = `qr-${id}`;
 List.appendChild(qrContainer);
 qrContainer.classList.add('flex', 'justify-center', 'items-center"');
+ // URL de la imagen
+ const imageUrl = '/img/recibo.png'; // Reemplaza con la ruta de tu imagen existente
 
-// Genera el Qr
-const qr = new QRCode(document.getElementById(`qr-${id}`), {
-text: `Metodo de pago: ${metodo}\nEstado del pago: ${estado}`,
-width: 128,
-height: 128
-});
+ // Generar el enlace
+ const imageLink = document.createElement('a');
+ imageLink.href = imageUrl;
+
+ // Generar el código QR con el enlace
+ const qr = new QRCode(document.getElementById(`qr-${id}`), {
+   text: imageLink.href,
+   width: 128,
+   height: 128
+ });
+
+ // Agregar el enlace al contenedor QR
+ qrContainer.appendChild(imageLink);
 }
 };
 
