@@ -1,7 +1,7 @@
 const body = document.querySelector('body');
 const createNotification = (isError, message) =>{
 const div = document.createElement('div');
-div.classList.add('fixed', 'top-20', 'right-0', 'left-0', 'lg:ml-64' ,'lg:pl-4' ,'lg:flex' ,'lg:flex-col' ,'lg:w-75%');
+div.classList.add('fixed', 'top-20', 'right-0', 'left-0');
 
 if(isError){
     div.innerHTML = `
@@ -25,5 +25,4 @@ if(isError){
 
  body.appendChild(div);
 }
-
 

@@ -71,7 +71,7 @@ formularioEfectivo.addEventListener('submit', async e  => {
 
         const response = await axios.post('/api/pagos', NewPago);
         if (response.data.metodo === 'Efectivo') {
-            crearReciboEfectivo(NewPago.Cantidad, NewPago.metodo, response.data.id);
+            crearReciboEfectivo(NewPago.Cantidad, NewPago.metodo, response.data.estado, response.data.id);
         } else {
             crearRecibo(NewPago.Cantidad, NewPago.metodo, response.data.id);
         }
@@ -97,7 +97,6 @@ const crearReciboEfectivo = (Cantidad, metodo, estado,id) => {
     </div>`;
 
     container.appendChild(List);
-
     
     if(estado === "Aprobado"){
       
@@ -106,23 +105,91 @@ qrContainer.id = `qr-${id}`;
 List.appendChild(qrContainer);
 qrContainer.classList.add('flex', 'justify-center', 'items-center"');
  // URL de la imagen
- const imageUrl = '/img/recibo.png'; // Reemplaza con la ruta de tu imagen existente
+ const imageUrl = '/img/recibo.png'; 
 
  // Generar el enlace
  const imageLink = document.createElement('a');
  imageLink.href = imageUrl;
 
- // Generar el código QR con el enlace
+ //Se Generar el código QR con el enlace
  const qr = new QRCode(document.getElementById(`qr-${id}`), {
    text: imageLink.href,
    width: 128,
    height: 128
  });
 
- // Agregar el enlace al contenedor QR
+ // Se agrega el enlace al contenedor QR
  qrContainer.appendChild(imageLink);
 }
+  // Botón de editar
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Editar';
+  editButton.classList.add('bg-blue-500', 'text-white', 'px-4', 'py-1', 'rounded');
+  editButton.addEventListener('click', async e => {
+    e.preventDefault();
+    
+    const capPago2 = {
+      Cantidad: Cantidad,
+      metodo: metodo,
+      estado:estado,
+      id:id
+    }
+    //console.log(capPago);
+    mostrarModalEdit2(capPago2);
+    console.log('Editar recibo:', id);
+  });
+
+  // Botón de eliminar
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Eliminar';
+  deleteButton.classList.add('bg-red-500', 'text-white', 'px-4', 'py-1', 'rounded');
+  deleteButton.addEventListener('click', async e => {
+    e.preventDefault();
+    List.remove();
+    await axios.delete(`/api/pagos/${id}`);
+  });
+
+  // Agregar botones al recibo
+  List.appendChild(editButton);
+  List.appendChild(deleteButton);
+
 };
+
+
+const modalEdit2 = document.querySelector('#modal-componet-cash-editar');
+const mostrarModalEdit2 = (capPago2) =>{
+  const inputEditCantidad = document.querySelector('#cantidad-efectivo-edit')
+
+  inputEditCantidad.value = capPago2.Cantidad;
+  
+
+  modalEdit2.classList.remove('hidden');
+
+  const editForm = document.querySelector('#formulario-efectivo-editar');
+  editForm.addEventListener('submit', async e =>{
+    e.preventDefault();
+
+    const newData = {
+      Cantidad: inputEditCantidad.value,
+      metodo: capPago2.metodo,
+    }
+   await axios.patch(`/api/pagos/${capPago2.id}`, newData);
+   createNotification(false, 'Pago modificado');
+   window.location.reload();
+    
+  modalEdit2.classList.add('hidden');
+
+  })
+}
+
+const closeEdit2 = document.querySelector('#close-modal-edit2');
+closeEdit2.addEventListener('click', () => {
+  //closeModal();
+  modalEdit2.classList.add('hidden');
+ 
+})
+
+
 
 formulario.addEventListener('submit', async e => {
     e.preventDefault();
@@ -134,7 +201,7 @@ formulario.addEventListener('submit', async e => {
         }
 
         const response = await axios.post('/api/pagos', NewPago)
-        crearRecibo(NewPago.Referencia, NewPago.Cantidad, NewPago.metodo,response.data.id);
+        crearRecibo(NewPago.Referencia, NewPago.Cantidad, NewPago.metodo, response.data.estado ,response.data.id);
         modalPago.classList.add('hidden');
         modalCash.classList.add('hidden');
         
@@ -168,15 +235,94 @@ console.log(estado);
   qrContainer.id = `qr-${id}`;
      // Append the QR code container to the list
   List.appendChild(qrContainer);
-  // Generate the QR code
-  const qr = new QRCode(document.getElementById(`qr-${id}`), {
-    text: `Referencia: ${Referencia}\nEstado: ${estado}`,
-    width: 128,
-    height: 128
-  });
+ // URL de la imagen
+ const imageUrl = '/img/recibo.png'; 
+
+ // Generar el enlace
+ const imageLink = document.createElement('a');
+ imageLink.href = imageUrl;
+
+ //Se Generar el código QR con el enlace
+ const qr = new QRCode(document.getElementById(`qr-${id}`), {
+   text: imageLink.href,
+   width: 128,
+   height: 128
+ });
+
+ // Se agrega el enlace al contenedor QR
+ qrContainer.appendChild(imageLink);
  }
+// Botón de eliminar
+const deleteButton = document.createElement('button');
+deleteButton.textContent = 'Eliminar';
+deleteButton.classList.add('bg-red-500', 'text-white', 'px-4', 'py-1', 'rounded');
+deleteButton.addEventListener('click', async e => {
+  e.preventDefault();
+  List.remove();
+  console.log(id);
+  await axios.delete(`/api/pagos/${id}`);
+});
+
+
+// Botón de editar
+const editButton = document.createElement('button');
+editButton.textContent = 'Editar';
+editButton.classList.add('bg-blue-500', 'text-white', 'px-4', 'py-1', 'rounded');
+editButton.addEventListener('click', async e => {
+  e.preventDefault();
+  
+  const capPago = {
+    Referencia: Referencia,
+    Cantidad: Cantidad,
+    metodo: metodo,
+    estado:estado,
+    id:id
+  }
+  //console.log(capPago);
+  mostrarModalEdit(capPago);
+  console.log('Editar recibo:', id);
+});
+
+// Agregar botones al recibo
+List.appendChild(editButton);
+List.appendChild(deleteButton);
 };
 
+const modalEdit = document.querySelector('#modal-componet-container-editar');
+const mostrarModalEdit = (capPago) =>{
+  const inputEditCantidad = document.querySelector('#edit-cantidad');
+  const inputEditReferencia = document.querySelector('#edit-referencia');
+
+  inputEditReferencia.value = capPago.Referencia;
+  inputEditCantidad.value = capPago.Cantidad;
+  
+
+  modalEdit.classList.remove('hidden');
+
+  const editForm = document.querySelector('#formulario-editar');
+  editForm.addEventListener('submit', async e =>{
+    e.preventDefault();
+
+    const newData = {
+      Referencia: inputEditReferencia.value,
+      Cantidad: inputEditCantidad.value,
+      metodo: capPago.metodo,
+    }
+   await axios.patch(`/api/pagos/${capPago.id}`, newData);
+   createNotification(false, 'Pago modificado');
+   window.location.reload();
+    
+  modalEdit.classList.add('hidden');
+
+  })
+}
+
+const closeEdit = document.querySelector('#close-modal-edit');
+closeEdit.addEventListener('click', () => {
+  //closeModal();
+  modalEdit.classList.add('hidden');
+ 
+})
 //boton de paypal
 window.paypal
   .Buttons({
@@ -253,7 +399,7 @@ window.paypal
           const transaction =
             orderData?.purchase_units?.[0]?.payments?.captures?.[0] ||
             orderData?.purchase_units?.[0]?.payments?.authorizations?.[0];
-            createNotification(false,`Transaction ${transaction.status}: ${transaction.id}<br><br>Pago realizado con exito`,);
+            createNotification(false,`Transaction ${transaction.status}: ${transaction.id}<br><br>Pago realizado con exito`,);          
             modalPaypal.classList.add('hidden');
           console.log(
             "Capture result",

@@ -77,4 +77,27 @@ pagoRouter.get('/:id', async (request,response) => {
     }
 });
 
+    pagoRouter.patch('/:id', async (request, response) => {
+    const user = request.user;
+
+    const {Referencia, Cantidad, metodo} = request.body;
+
+    await Pago.findByIdAndUpdate(request.params.id, {Referencia, Cantidad, metodo});
+
+    return response.sendStatus(200);
+})
+
+pagoRouter.delete('/:id', async (request, response) => {
+    const user = request.user;
+
+    await Pago.findByIdAndDelete(request.params.id);
+
+    user.pagos = user.pagos.filter(id => id.toString() !== request.params.id);
+
+    await user.save();
+
+    return response.status(204);
+});
+
+
 module.exports = pagoRouter;

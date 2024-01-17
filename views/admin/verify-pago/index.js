@@ -58,16 +58,6 @@ const mostrarPagos = document.querySelector("#pagos");
     });
     buttonContainer.appendChild(buttonCancelar);
     
-    const buttonPendiente = document.createElement('button');
-    buttonPendiente.classList.add('border', 'rounded', 'text-white', 'bg-yellow-500', 'p-1', 'mt-1', 'flex', 'justify-center');
-    buttonPendiente.innerText = 'Pendiente';
-    buttonPendiente.addEventListener('click', async e => {
-      e.preventDefault();
-      await axios.put(`/api/pagos/${pago.id}`, { estado: 'En espera' });
-      location.reload();
-    });
-    buttonContainer.appendChild(buttonPendiente);
-    
     viewPagos.appendChild(buttonContainer);
   });
 })();

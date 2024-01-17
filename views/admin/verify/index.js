@@ -62,7 +62,7 @@ async function filtrarPagosPorCedula(id) {
     mostrarPagos.appendChild(viewPagos);
 
     const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('flex');
+    buttonContainer.classList.add('flex', 'justify-around');
     
     const buttonAprobar = document.createElement('button');
     buttonAprobar.classList.add('border', 'rounded', 'text-white', 'bg-green-500', 'p-1', 'mt-1', 'flex', 'justify-center');
@@ -83,16 +83,6 @@ async function filtrarPagosPorCedula(id) {
       location.reload();
     });
     buttonContainer.appendChild(buttonCancelar);
-    
-    const buttonPendiente = document.createElement('button');
-    buttonPendiente.classList.add('border', 'rounded', 'text-white', 'bg-yellow-500', 'p-1', 'mt-1', 'flex', 'justify-center');
-    buttonPendiente.innerText = 'Pendiente';
-    buttonPendiente.addEventListener('click', async e => {
-      e.preventDefault();
-      await axios.put(`/api/pagos/${pago.id}`, { estado: 'En espera' });
-      location.reload();
-    });
-    buttonContainer.appendChild(buttonPendiente);
     
     viewPagos.appendChild(buttonContainer);
   });
