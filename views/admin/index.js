@@ -87,19 +87,19 @@ async function mostrarProductos() {
       console.log(fechaFormateada);
 
       row.innerHTML += `<td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${name}</p>
+        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${name}</p>
       </td>
 
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-      <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Cedula}</p>
+      <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${Cedula}</p>
     </td>
       
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${fechaFormateada}</p>
+        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${fechaFormateada}</p>
       </td>
 
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Sintomas}</p>
+        <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${Sintomas}</p>
       </td>
       
       <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">

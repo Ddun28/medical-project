@@ -74,7 +74,7 @@ const sidebarHistorial = () =>{
     <div class="p-4 space-y-4">
         <!-- Inicio -->
         <a href="/principal" aria-label="dashboard"
-            class="relative px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            class="relative px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-home"></i>
             <span>Inicio</span>
         </a>
@@ -83,11 +83,11 @@ const sidebarHistorial = () =>{
             <i class="fas fa-user"  text-white"></i>
             <span class="-mr-1 font-medium">Recipe e Indicaciones</span>
         </a>
-        <a href="/pagos" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+        <a href="/pagos" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-wallet"></i>
             <span>Metodos de Pagos</span>
         </a>
-        <a href="/login" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+        <a href="/login" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-sign-out-alt"></i>
             <span>Cerrar sesión</span>
         </a>
@@ -97,7 +97,7 @@ const sidebarHistorial = () =>{
 
 const sidebarPagos = () =>{
     sidebar.innerHTML = `
-    <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+    <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
         <button id="menuBtn" class="lg:hidden">
@@ -114,17 +114,17 @@ const sidebarPagos = () =>{
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-800 dark:text-white">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
     <!-- Items -->
     <div class="p-4 space-y-4">
         <!-- Inicio -->
         <a href="/principal" aria-label="dashboard"
-            class="relative px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            class="relative px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-home"></i>
             <span>Inicio</span>
         </a>
 
-        <a href="/historial" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+        <a href="/historial" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-user" ></i>
             <span>Recipe e Indicaciones</span>
         </a>
@@ -132,7 +132,7 @@ const sidebarPagos = () =>{
             <i class="fas fa-wallet"  text-white"></i>
             <span class="-mr-1 font-medium">Metodos de Pagos</span>
         </a>
-        <a href="/" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+        <a href="/" id="cerrarbtn" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
             <i class="fas fa-sign-out-alt"></i>
             <span>Cerrar sesión</span>
         </a>
@@ -142,7 +142,7 @@ const sidebarPagos = () =>{
 
 const sidebarAdmin = () => {
     sidebar.innerHTML = `
-    <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+    <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
         <button id="menuBtn" class="lg:hidden">
@@ -187,7 +187,7 @@ const sidebarAdmin = () => {
 }
 const sidebarHistory = () => {
     sidebar.innerHTML = `
-    <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+    <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
     <div class="flex justify-between items-center px-9">
         <!-- Ícono de Menú -->
         <button id="menuBtn" class="lg:hidden">
@@ -235,7 +235,7 @@ const sidebarHistory = () => {
 
     const sidebarVerify = () => {
         sidebar.innerHTML = `
-        <nav class="bg-white border-b border-gray-300 dark:bg-slate-800">
+        <nav class="bg-white border-b border-gray-300 dark:bg-slate-900 dark:border-b dark:border-sky-500">
         <div class="flex justify-between items-center px-9">
             <!-- Ícono de Menú -->
             <button id="menuBtn" class="lg:hidden">
