@@ -115,7 +115,7 @@ await transporter.sendMail({
         <p class="text" >Click en el Link para que lo redireccione a la pagina.</p>
       </div>
       
-      <h1 class="title">Verificacion <span style="color: #13293D">Medical Health</span></h1>
+      <h1 class="title">Verificacion <span style="color: #FFFFFF">Medical Health</span></h1>
   
       <a class="verification-link" href="${PAGE_URL}/verify/${savedUser.id}/${token}" style="color: #FFFFFF;">Verify email.</a>
     </div>

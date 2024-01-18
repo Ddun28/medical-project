@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     pdf: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pdf'
+    }],
+    paypal: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Paypal'
     }]
 });
 

@@ -31,7 +31,7 @@
             <button id="menuBtn">
                 <i class="fas fa-bars text-cyan-500 text-lg"></i>
             </button>
-    
+            
             <!-- Logo -->
             <div class="md:ml-auto md:mr-10">
                 <img src="/img/Blue Minimalist Medical Logo.png" alt="logo" class="h-20 w-28 dark:hidden">
@@ -72,17 +72,20 @@
             <h1 class="text-3xl font-bold text-gray-700 dark:text-white">Verificar pagos</h1>
         </div>
         <div class="bg-slate-300 p-3 mt-3 rounded-md dark:bg-slate-900 dark:shadow-md dark:shadow-indigo-600">
-            <label for="countries" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Fecha</label>
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option selected>Seleccione la fecha</option>
-              <option value="">Hoy</option>
-              <option value="">7 dias despues</option>
-              <option value="">Mes</option>
+            <label for="estado-pago" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Estado del Pago</label>
+            <select id="estado-pago" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="">Todos</option>
+              <option value="Aprobado">Aprobado</option>
+              <option value="En espera">En espera</option>
+              <option value="Cancelado">Cancelado</option>
             </select>
-        </div>
+            <button id="limpiar-busqueda" class="mt-2 px-4 py-2 text-white bg-red-500 rounded">Limpiar búsqueda</button>
+          </div>
 
-        <div id="pagos" class="flex justify-evenly mt-5"></div>        
-      
+        <div id="pagos" class="flex justify-evenly mt-5"></div>    
+        <div id="paypal" class="flex justify-center items-center mt-5"></div>
+
+        
     </div>
     <script src="../../components/notificaciones.js"></script>
     <script src="../../components/sidebar.js"></script>

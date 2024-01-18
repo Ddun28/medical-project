@@ -100,8 +100,10 @@ function filtrarCitasPorFecha(req, res) {
   
     // Obtener la fecha de inicio y fin según el rango seleccionado
     if (rangoFecha === 'Hoy') {
-      fechaInicio = new Date();
-      fechaFin = new Date();
+      const today = new Date();
+    const formattedToday = today.toISOString().split('T')[0]; // Obtener la fecha actual en formato "YYYY-MM-DD"
+    fechaInicio = new Date(formattedToday + 'T00:00:00.000Z'); // Establecer la hora a las 00:00:00 UTC
+    fechaFin = new Date(formattedToday + 'T23:59:59.999Z'); // Establecer la hora a las 23:59:59.999 UTC 
     } else if (rangoFecha === '7 dias despues') {
       fechaInicio = new Date();
       fechaFin = new Date();

@@ -1,5 +1,7 @@
 const PaypalRouter = require('express').Router();
 const express = require('express');
+const Paypal = require('../model/paypal');
+
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 const base = "https://api-m.sandbox.paypal.com";
@@ -126,10 +128,35 @@ PaypalRouter.post("/:orderID/capture", async (req, res) => {
   try {
     const { orderID } = req.params;
     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
+    
+    // Guardar la información en la base de datos utilizando el modelo Paypal
+    const paypal = new Paypal({
+      id: jsonResponse.id,
+      status: jsonResponse.status,
+      email_address:  jsonResponse.payer.email_address,
+      user: req.user, // Si tienes la información del usuario disponible en req.user
+    });
+
+    await paypal.save();
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
     console.error("Failed to create order:", error);
     res.status(500).json({ error: "Failed to capture order." });
+  }
+});
+
+PaypalRouter.get("/:id", async (req, res) => {
+  const orderId = req.params.id;
+
+  try {
+    const order = await Paypal.find({ user: orderId }).populate('user');
+    if (!order) {
+      return res.status(404).json({ error: 'Pago no encontrado' });
+    }
+
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener el pago' });
   }
 });
 

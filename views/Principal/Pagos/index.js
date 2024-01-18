@@ -323,6 +323,7 @@ closeEdit.addEventListener('click', () => {
   modalEdit.classList.add('hidden');
  
 })
+
 //boton de paypal
 window.paypal
   .Buttons({
@@ -453,9 +454,6 @@ function resultMessage(message) {
     //console.log(data);
     price.innerHTML =`$${data.length * 40} `;
   })();
-
-
-
 
 /*
 function openModal(){

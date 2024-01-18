@@ -171,7 +171,7 @@ const sidebarAdmin = () => {
 
         <a href="/agendar" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-wallet"></i>
-            <span>Historial</span>
+            <span>Agendar Recipes</span>
         </a>
         <a href="/verificacion/" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group dark:text-white">
             <i class="fas fa-user"></i>

@@ -11,6 +11,7 @@ const mostrarPagos = document.querySelector("#pagos");
 
 formCedula.addEventListener('submit', async e => {
   e.preventDefault();
+  eliminarBusqueda();
   
   const cedula = document.querySelector("#cedula").value; 
   
@@ -26,7 +27,9 @@ formCedula.addEventListener('submit', async e => {
         
       
         let id = user.id;
+        
     filtrarPagosPorCedula(id);
+    filtrarPagosPorCedula2(id);
   }); 
     } catch (error) {
         console.log(error);
@@ -47,15 +50,15 @@ async function filtrarPagosPorCedula(id) {
     let content = '';
 
     if (pago.metodo === 'Efectivo') {
-      content += `<p class="font-normal text-gray-700 dark:text-gray-400">Cantidad Pagada: ${pago.Cantidad}</p>`;
-      content += `<p class="font-normal text-gray-700 dark:text-gray-400">Metodo de pago: ${pago.metodo}</p>`;
-      content += `<p class="font-medium text-gray-700 dark:text-gray-400">Estado del Pago: ${pago.estado}</p>`;
+      content += `<p class="font-normal text-gray-700 dark:text-white">Cantidad Pagada: ${pago.Cantidad}</p>`;
+      content += `<p class="font-normal text-gray-700 dark:text-white">Metodo de pago: ${pago.metodo}</p>`;
+      content += `<p class="font-medium text-gray-700 dark:text-white">Estado del Pago: ${pago.estado}</p>`;
 
     } else {
       content += `<h5 class="mb-2 font-normal tracking-tight text-gray-900 dark:text-white">Referencia del pago: ${pago.Referencia}</h5>`;
-      content += `<p class="font-normal text-gray-700 dark:text-gray-400">Cantidad Pagada: ${pago.Cantidad}</p>`;
-      content += `<p class="font-normal text-gray-700 dark:text-gray-400">Metodo de pago: ${pago.metodo}</p>`;
-      content += `<p class="font-medium text-gray-700 dark:text-gray-400">Estado del Pago: ${pago.estado}</p>`;
+      content += `<p class="font-normal text-gray-700  dark:text-white">Cantidad Pagada: ${pago.Cantidad}</p>`;
+      content += `<p class="font-normal text-gray-700 dark:text-white">Metodo de pago: ${pago.metodo}</p>`;
+      content += `<p class="font-medium text-gray-700 dark:text-white">Estado del Pago: ${pago.estado}</p>`;
     }
 
     viewPagos.innerHTML = content;
@@ -93,13 +96,56 @@ async function filtrarPagosPorCedula(id) {
 
       
       eliminarBusquedaBtn.addEventListener('click', () => {
-        eliminarBusquedaYMostrarProductos();
+        eliminarBusqueda();
       });
       
-      // Función para eliminar la búsqueda y mostrar los productos
-      function eliminarBusquedaYMostrarProductos() {
-        
+      function eliminarBusqueda() {
         while (mostrarPagos.firstChild) {
           mostrarPagos.removeChild(mostrarPagos.firstChild);
         }
+        
+        const paypalDiv = document.getElementById('paypal');
+        while (paypalDiv.firstChild) {
+          paypalDiv.removeChild(paypalDiv.firstChild);
+        }
       }
+
+async function filtrarPagosPorCedula2 (id){
+  const paypalDiv = document.getElementById('paypal');
+  axios.get(`/api/orders/${id}`)
+    .then(response => {
+      const paymentData = response.data;
+      paymentData.forEach(i => {
+        const { id, status } = i;
+        const styleDiv = document.createElement('div');
+        styleDiv.classList.add(
+          'block', 'max-w-sm', 'p-6', 'bg-white', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'hover:bg-gray-100',
+          'dark:bg-gray-800', 'dark:border-gray-700', 'dark:hover:bg-gray-700'
+        );
+      
+        
+        const paymentTitle = document.createElement('p');
+        paymentTitle.classList.add('dark:text-white')
+        paymentTitle.textContent = 'Pago Realizado con PayPal';
+  
+        const paymentId = document.createElement('p');
+        paymentId.classList.add('dark:text-white')
+        paymentId.textContent = `ID: ${id}`;
+  
+        const paymentStatus = document.createElement('p');
+        paymentStatus.classList.add('dark:text-white')
+        paymentStatus.textContent = `Estado del pago: ${status}`;
+  
+        
+        styleDiv.appendChild(paymentTitle);
+        styleDiv.appendChild(paymentId);
+        styleDiv.appendChild(paymentStatus);
+  
+        
+        paypalDiv.appendChild(styleDiv);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}     

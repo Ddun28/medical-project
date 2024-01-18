@@ -144,18 +144,18 @@ console.log(user.pagos);
       
           row.innerHTML += `
           <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${user.name}</p>
+    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${user.name}</p>
    </td>
    
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-   <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Cedula}</p>
+   <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${Cedula}</p>
   </td>
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${fechaFormateada}</p>
+    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${fechaFormateada}</p>
    </td>
 
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
-    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5">${Sintomas}</p>
+    <p class="text-gray-700 font-medium text-lg font-bold text-sm leading-5 dark:text-white">${Sintomas}</p>
    </td>
    <td class="py-4 px-6 border-b border-gray-200 whitespace-no-wrap">
    <a href="/agendar-recipe/${agendar}/${userId}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Agendar</a>
@@ -185,6 +185,9 @@ function eliminarBusquedaYMostrarProductos() {
     listado.removeChild(listado.firstChild);
   }
   rangoFecha.selectedIndex = -1;
+
+  const cedula = document.querySelector('#cedula');
+  cedula.value = '';
   // Llama a la función para mostrar los productos nuevamente
   mostrarProductos();
 }
