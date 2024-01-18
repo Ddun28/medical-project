@@ -88,7 +88,7 @@ window.addEventListener("load", function() {
             const styleDiv = document.createElement('div');
             styleDiv.classList.add(
               'block', 'max-w-sm', 'p-6', 'bg-white', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'hover:bg-gray-100',
-               'bg-gray-800', 'dark:border-gray-700', 'dark:hover:bg-gray-700'
+               'dark:bg-gray-800', 'dark:border-gray-700', 'dark:hover:bg-gray-700'
             );
 
             const paymentTitle = document.createElement('p');

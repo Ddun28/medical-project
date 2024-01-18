@@ -43,8 +43,8 @@ async function filtrarPagosPorCedula(id) {
   data.forEach(pago => {
     const viewPagos = document.createElement('div');
     viewPagos.classList.add(
-      'block','max-w-sm','p-6','bg-white','border','border-gray-200','rounded-lg','shadow','hover:bg-gray-100',
-      'dark:bg-gray-800','dark:border-gray-700','dark:hover:bg-gray-700'
+      'block', 'max-w-sm', 'p-6', 'bg-white', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'hover:bg-gray-100',
+      'dark:border-gray-700', 'dark:hover:bg-gray-700'
     );
 
     let content = '';
@@ -119,8 +119,8 @@ async function filtrarPagosPorCedula2 (id){
         const { id, status } = i;
         const styleDiv = document.createElement('div');
         styleDiv.classList.add(
-          'block', 'max-w-sm', 'p-6', 'bg-white', 'border', 'border-gray-200', 'rounded-lg', 'shadow', 'hover:bg-gray-100',
-          'dark:bg-gray-800', 'dark:border-gray-700', 'dark:hover:bg-gray-700'
+          'block','max-w-sm','p-6','bg-white','border','border-gray-200','rounded-lg','shadow','hover:bg-gray-100',
+      'dark:bg-gray-800','dark:border-gray-700','dark:hover:bg-gray-700'
         );
       
         
