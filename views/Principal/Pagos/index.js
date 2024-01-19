@@ -229,11 +229,11 @@ console.log(estado);
     container.appendChild(List)
     
     if(estado === "Aprobado"){
-          // Create a container for the QR code
+          
   const qrContainer = document.createElement('div');
   qrContainer.classList.add('flex', 'justify-center', 'items-center"');
   qrContainer.id = `qr-${id}`;
-     // Append the QR code container to the list
+     
   List.appendChild(qrContainer);
  // URL de la imagen
  const imageUrl = '/img/recibo.png'; 

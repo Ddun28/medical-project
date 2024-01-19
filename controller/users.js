@@ -129,7 +129,6 @@ return response.status(201).json({message:'Usuario creado, Por favor verificar t
 
 });
 
-// Expiró el token
 userRouter.patch('/:id/:token', async (request, response) => {
   try {
     const token = request.params.token;

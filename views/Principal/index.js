@@ -48,42 +48,52 @@ inputTlf.addEventListener('change', e => {
         return
     }
 })
-
 formulario.addEventListener('submit', async e => {
     e.preventDefault();
 
-    if (!inputEdad.value ||  !inputTlf.value || !inputFecha.value || !inputHora.value || !inputSintomas.value){
-        createNotification(true, "Llenar todos los campos")
-        return
-    }      
-        try {
-            //se crea un objeto para guardar en la bd
-        const newCita = {
-            Edad: inputEdad.value,
-            Telefono: inputTlf.value,
-            Cedula: inputCedula.value,
-            Fecha: inputFecha.value,
-            Hora: inputHora.value,
-            Sintomas: inputSintomas.value
-        }
-
-        const response = await axios.post('/api/citas', newCita);
-        //console.log(response);
-        //console.log(newCita);
-        //console.log(response.data.id);
-
-
-        crearLIst(newCita.Edad, newCita.Cedula,newCita.Telefono, newCita.Fecha, newCita.Hora, newCita.Sintomas, response.data.id)
-        formulario.reset();
-        createNotification(false, 'Cita Agendada')
-    } catch (error) {
-
-        console.log(error);
-        createNotification(true,error.response.data.error)
+    if (!inputEdad.value || !inputTlf.value || !inputFecha.value || !inputHora.value || !inputSintomas.value) {
+        createNotification(true, "Llenar todos los campos");
+        return;
     }
 
-})
+    try {
+        if (editandoId) {
+            const editCita = {
+                Edad: inputEdad.value,
+                Telefono: inputTlf.value,
+                Cedula: inputCedula.value,
+                Fecha: inputFecha.value,
+                Hora: inputHora.value,
+                Sintomas: inputSintomas.value
+            };
 
+            await axios.patch(`/api/citas/${editandoId}`, editCita);
+            createNotification(false, 'Cita modificada');
+            editar = false;
+            editandoId = null;
+            window.location.reload();
+            formulario.querySelector('button[type="submit"]').textContent = 'Agendar';
+        } else {
+            const newCita = {
+                Edad: inputEdad.value,
+                Telefono: inputTlf.value,
+                Cedula: inputCedula.value,
+                Fecha: inputFecha.value,
+                Hora: inputHora.value,
+                Sintomas: inputSintomas.value
+            };
+
+            const response = await axios.post('/api/citas', newCita);
+            crearLIst(newCita.Edad, newCita.Cedula, newCita.Telefono, newCita.Fecha, newCita.Hora, newCita.Sintomas, response.data.id);
+            createNotification(false, 'Cita Agendada');
+        }
+
+        formulario.reset();
+    } catch (error) {
+        console.log(error);
+        createNotification(true, error.response.data.error);
+    }
+});
 //se crear las citas y se muestran
 const crearLIst = ( Edad, Cedula,Telefono, Fecha, Hora, Sintomas, id) => {
     const listado = document.createElement('div');
@@ -144,38 +154,33 @@ console.log(fechaFormateada);
 
     }
 
-    async function cargarEdicion(id){
-        if(!editar){
-         console.log('edit');
-         editar = true;
-
-         inputEdad.value= Edad,
-         inputTlf.value= Telefono,
-         inputCedula.value= Cedula,
-         inputFecha.value= Fecha,
-         inputHora.value= Hora,
-         inputSintomas.value= Sintomas,
- //cambiar el texto al boton
- btnEditar.textContent = 'Guardar';
-             }else {
-                editar = false;
-                const editcita =  {
-                Edad: inputEdad.value,
-                Cedula: inputCedula.value,
-                Telefono: inputTlf.value,
-                Fecha: inputFecha.value,
-                Hora: inputHora.value,
-                Sintomas: inputSintomas.value
-            };
-                formulario.reset();
-                await axios.patch(`/api/citas/${id}`, editcita)
-                createNotification(false, 'Cita modificada');
-            console.log('editando x2');
+    async function cargarEdicion(id) {
+        if (!editar) {
+            console.log('edit');
+            editar = true;
+    
+            inputEdad.value = Edad;
+            inputTlf.value = Telefono;
+            inputCedula.value = Cedula;
+            inputFecha.value = Fecha;
+            inputHora.value = Hora;
+            inputSintomas.value = Sintomas;
+    
+            // Cambiar el texto del botón
+            formulario.querySelector('button[type="submit"]').textContent = 'Guardar';
+    
+            // Establecer el valor de editandoId
+            editandoId = id;
+        } else {
+            editar = false;
+    
+            // Restablecer el valor de editandoId
+            editandoId = null;
         }
+    
         return;
     }
 }
-    
     
 
 //carga de la bd de la api

@@ -85,9 +85,9 @@ citaRouter.delete('/:id', async (request, response) => {
 citaRouter.patch('/:id', async (request, response) => {
     const user = request.user;
 
-    const {Edad, Telefono, Fecha, Hora, Sintomas} = request.body;
+    const {Edad, Telefono, Cedula,Fecha, Hora, Sintomas} = request.body;
 
-    await Cita.findByIdAndUpdate(request.params.id, {Edad, Telefono, Fecha, Hora, Sintomas});
+    await Cita.findByIdAndUpdate(request.params.id, {Edad, Telefono, Cedula,Fecha, Hora, Sintomas});
 
     return response.sendStatus(200);
 })
@@ -104,7 +104,7 @@ function filtrarCitasPorFecha(req, res) {
     const formattedToday = today.toISOString().split('T')[0]; // Obtener la fecha actual en formato "YYYY-MM-DD"
     fechaInicio = new Date(formattedToday + 'T00:00:00.000Z'); // Establecer la hora a las 00:00:00 UTC
     fechaFin = new Date(formattedToday + 'T23:59:59.999Z'); // Establecer la hora a las 23:59:59.999 UTC 
-    } else if (rangoFecha === '7 dias despues') {
+    } else if (rangoFecha === '7 dias') {
       fechaInicio = new Date();
       fechaFin = new Date();
       fechaFin.setDate(fechaFin.getDate() + 7);
