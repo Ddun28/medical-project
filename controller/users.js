@@ -74,7 +74,6 @@ await transporter.sendMail({
         text-align: center; 
       }
   
-      /* Dark blue box styles */
       .blue{
         background-color: #6666ff;
         color: #FFFFFF;
@@ -83,7 +82,6 @@ await transporter.sendMail({
         border-radius: 10px; 
       }
   
-      /* Title styles */
       .title {
         color: #13293D;
         font-size: 24px;
@@ -91,7 +89,7 @@ await transporter.sendMail({
         margin-bottom: 10px;
       }
   
-      /* Verification link styles */
+      /* Verificacion */
       .verification-link {
         display: inline-block;
         background-color: #13293D;
@@ -115,9 +113,9 @@ await transporter.sendMail({
         <p class="text" >Click en el Link para que lo redireccione a la pagina.</p>
       </div>
       
-      <h1 class="title">Verificacion <span style="color: #FFFFFF">Medical Health</span></h1>
+      <h1 class="title">Verificacion <span style="color: #FFFFFF">Verificacion Medical Health</span></h1>
   
-      <a class="verification-link" href="${PAGE_URL}/verify/${savedUser.id}/${token}" style="color: #FFFFFF;">Verify email.</a>
+      <a class="verification-link" href="${PAGE_URL}/verify/${savedUser.id}/${token}" style="color: #FFFFFF;">Verificar email.</a>
     </div>
   </body>
   </html>
