@@ -24,9 +24,9 @@ const crearSidebar = () =>{
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
     <!-- Items -->
-    <div class="p-4 space-y-4">
+    <div class="p-4 space-y-4 fixed">
         <!-- Inicio -->
         <a href="#" aria-label="dashboard"
             class="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400">
@@ -114,9 +114,9 @@ const sidebarPagos = () =>{
 </nav>
 
 <!-- Barra lateral -->
-<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
+<div id="sideNav" class="lg:block hidden bg-white w-64 h-screen absolute  rounded-none border-none dark:bg-slate-900 dark:border-s-4 dark:border-sky-500">
     <!-- Items -->
-    <div class="p-4 space-y-4">
+    <div class="p-4 space-y-4 fixed">
         <!-- Inicio -->
         <a href="/principal" aria-label="dashboard"
             class="relative px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group  dark:text-white">
