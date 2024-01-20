@@ -1,12 +1,11 @@
 const mostrarPagos = document.querySelector("#pagos");
 const paypalDiv = document.getElementById('paypal');
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function(){
   var contenedor = document.querySelector("#contenedor");
-  console.log('entra');
+  body.classList.remove('overflow-hidden')
   contenedor.classList.add('hidden');
-});
-
+})
 (async () => {
   const id = window.location.pathname.split('/')[2];
   const { data } = await axios.get(`/api/pagos/${id}`);
