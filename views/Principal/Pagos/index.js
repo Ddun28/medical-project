@@ -88,7 +88,7 @@ formularioEfectivo.addEventListener('submit', async e  => {
 const crearReciboEfectivo = (Cantidad, metodo, estado,id) => {
     const List = document.createElement('div');
     List.id = id;
-    List.classList.add('bg-gray-50', 'shadow-lg', 'w-64', 'mx-16', 'p-4', 'justify-center', 'flex-col', 'gap-3', 'md:w-64', 'px-2', 'flex', 'm-2', 'dark:bg-slate-900');
+    List.classList.add('bg-gray-50', 'shadow-lg', 'w-64', 'mx-16', 'p-4', 'justify-center', 'flex-col', 'gap-3', 'md:w-64', 'px-2', 'flex', 'm-2', 'dark:bg-gray-900');
 
     List.innerHTML = `<div class="p-3">
     <p>Cantidad Pagada: ${Cantidad}</p>
@@ -217,7 +217,7 @@ const crearRecibo = (Referencia, Cantidad, metodo, estado,id) => {
     const List = document.createElement('div');
     List.id = id;
     List.classList.add('bg-gray-50', 'shadow-lg', 'w-64',  'mx-16' ,'p-4', 'justify-center' ,'flex-col'
-    ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-slate-900')
+    ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-gray-900')
 
     List.innerHTML = `<div class="p-3">
     <p>Nro de Referencia: ${Referencia}</p>

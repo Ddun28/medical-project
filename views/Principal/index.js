@@ -98,7 +98,7 @@ formulario.addEventListener('submit', async e => {
 const crearLIst = ( Edad, Cedula,Telefono, Fecha, Hora, Sintomas, id) => {
     const listado = document.createElement('div');
     listado.classList.add('bg-gray-50' ,'rounded-2xl' ,'shadow-lg', 'w-64', 'mx-16' ,'p-4', 'justify-center' ,'flex-col'
-    ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-slate-900');
+    ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-gray-900');
     //se le asigna un id a la lista
     listado.id = id;
 

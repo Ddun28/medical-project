@@ -58,7 +58,7 @@ pdfRouter.get('/', async (request, response) => {
 
     const user = await Pdf.findOne({ user: userId }).sort({ createdAt: -1 });
     if (!user) {
-      return response.status(404).json({ error: 'Usuario no encontrado' });
+      return response.status(204).end();
     }
 
     // Generar el PDF

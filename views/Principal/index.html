@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="icon" type="image/icon-x"  href="/img/favicon-32x32.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
    
 </head>
-<body class="font-principal bg-white overflow-hidden dark:bg-slate-900 dark:text-white">
+<body class="font-principal bg-white overflow-hidden dark:bg-gray-900 dark:text-white">
     <div class="h-screen bg-slate-300 flex justify-center items-center"id="contenedor">
         <div class="lds-roller">
         <div></div>
@@ -28,7 +29,7 @@
 
     <div id="sidebar"></div>
 
-    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 dark:bg-slate-800">
+    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 dark:bg-gray-800">
         <div class="text-center py-4 flex justify-center">
             <h1 class="text-4xl font-bold text-gray-700 dark:text-white">Bienvenido</h1>  
             <p class="text-4xl ml-5 font-sans-bold text-gray-700 dark:text-white" id="name"></p>
@@ -41,7 +42,7 @@
         </div>
         <div class="flex mx-2">
             <div class="bg-gray-50 rounded-2xl shadow-lg max-w-3xl w-full mx-4 md:mx-8 p-4 items-center flex-col gap-3 md:w-1/2 px-2 flex sm:items-center 
-            sm:justify-center dark:bg-slate-900 dark:shadow-md dark:shadow-indigo-600">
+            sm:justify-center dark:bg-gray-900 dark:shadow-md dark:shadow-indigo-500/50 ">
 
                 <h1 class="mx-8 font-bold text-xl text-gray-700 dark:text-white">Datos Del Paciente:</h1>
                 <form action="" id="citas">
@@ -84,8 +85,8 @@
                 </form>
             </div>
             <div class="md:block hidden md:w-1/2">
-                <img class="rounded-2xl w-56 lg:w-96 dark:bg-slate-800 flex items-center h-full shadow-lg mx-16 dark:hidden" src="/img/undraw_Doctors_p6aq.png" alt="">
-                <img src="/img/undraw_Doctors_v2.jpg" class="dark:block rounded-md hidden my-6 h-full lg:w-96 dark:shadow-md dark:shadow-indigo-600 dark:bg-slate-800  items-center shadow-lg mx-16" alt="">
+                <img class="rounded-2xl w-56 lg:w-96 dark:bg-gray-800 flex items-center h-full shadow-lg mx-16 dark:hidden" src="/img/undraw_Doctors_p6aq.png" alt="">
+                <img src="/img/undraw_Doctors_v2.jpg" class="dark:block rounded-md hidden my-6 h-full lg:w-96 dark:shadow-md dark:shadow-indigo-600 dark:bg-gray-800  items-center shadow-lg mx-16" alt="">
                 
             </div>
         </div>
@@ -100,7 +101,7 @@
             <span>Realizar el pago</span>
             <a href="/pagos">
                <button class="mx-4 border-2 border-solid p-1 ease-out duration-300 
-                bg-slate-400 rounded-md text-white shadow-lg hover:bg-slate-900 dark:border-solid dark:border-2 dark:bg-slate-800 ">Pagar</button> 
+                bg-slate-400 rounded-md text-white shadow-lg hover:bg-gray-900 dark:border-solid dark:border-2 dark:bg-gray-800 ">Pagar</button> 
                </a>  
         </div>
     </div>

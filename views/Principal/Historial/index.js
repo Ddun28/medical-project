@@ -23,7 +23,7 @@ axios.get('/api/pdf/all')
       // Crear card al pdf
       const card = document.createElement('div');
       card.classList.add('bg-gray-50' ,'rounded-2xl' ,'shadow-lg', 'w-64', 'mx-16' ,'p-4', 'justify-center' ,'flex-col'
-      ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-slate-900');
+      ,'gap-3' ,'md:w-64' ,'px-2' ,'flex', 'm-2', 'dark:bg-gray-900');
 
       const title = document.createElement('h5');
       title.classList.add('mb-2', 'text-2xl', 'font-bold', 'tracking-tight', 'text-gray-900', 'dark:text-white');
