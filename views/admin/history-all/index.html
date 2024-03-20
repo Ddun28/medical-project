@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="icon" type="image/icon-x"  href="/img/favicon-32x32.png">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"  rel="stylesheet" />
     
 </head>
-<body class="font-principal bg-white dark:bg-slate-900 overflow-hidden dark:text-white">
-    <div class="h-screen bg-slate-300 flex justify-center items-center" id="contenedor">
+<body class="font-principal bg-white dark:bg-gray-900 overflow-hidden dark:text-white">
+    <div class="h-screen bg-gray-300 flex justify-center items-center" id="contenedor">
         <div class="lds-roller">
         <div></div>
         <div></div>
@@ -26,19 +27,19 @@
     </div>
     
    <div id="sidebar"></div>
-    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 h-screen dark:bg-slate-800">
+    <div class="lg:ml-64 lg:pl-4 lg:flex lg:flex-col lg:w-75% bg-gray-200 py-2 h-screen dark:bg-gray-800">
         <div class="text-center">
             <h1 class="text-3xl font-bold text-gray-700 dark:text-white">Agendar Recipe</h1>
         </div>
         <form id="filtroForm">
             <label for="cedula" class="block mb-2 font-medium text-lg text-gray-900 dark:text-white">Buscar Por Cedula</label>
-       <input id="cedula" type="text" class="bg-gray-50 border mr-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
+       <input id="cedula" type="text" class="bg-gray-50 border mr-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400
         dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Numero de Cedula"></input>
        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 mt-2">Buscar</button>
        <button type="reset" id="eliminarBusqueda" class="ml-1 bg-red-500 hover:bg-red-600 text-white rounded px-4 py-2 mt-2">Eliminar Busqueda</button>
        </form>
         <div class="flex justify-center mt-8">
-            <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-900 dark:border-gray-300">
                 <form id="form-pdf" class="space-y-2">
                     <h5 class="text-xl font-medium text-gray-900 dark:text-white">Recipe del usuario</h5>
                     <h5 id="name" class="text-base font-bold text-gray-900 dark:text-white"></h5>

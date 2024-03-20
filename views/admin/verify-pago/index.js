@@ -119,3 +119,4 @@ window.addEventListener("load", function() {
 
   mostrarPagosFiltrados("", data); // Mostrar todos los pagos al cargar la página
 })();
+
